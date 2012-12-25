@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Zhaohai::Application.config.secret_token = 'ecbe2515d39bd3aee05a6d7071aa10718b7dd3f9a5e0c346ad3bb7ec186a6aaa860e4edd1a69991bb7e83a97b4e03c516b6d9c931cf2db99b253bd905d530105'
+Zhaohai::Application.config.secret_token = '66fe85603f062e3f970e39ad00e16652217ec178dc23aad40f04d091101d97e886d92d31d400ba69e7b26a2e3cb9a04bfdb244f31208e915fbe52a0bac14fdc7'
