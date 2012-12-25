@@ -1,4 +1,6 @@
-source 'https://rubygems.org'
+require 'rbconfig'
+HOST_OS = RbConfig::CONFIG['host_os']
+source 'http://ruby.taobao.org'
 gem 'rails', '3.2.9'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -23,3 +25,30 @@ gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "figaro", ">= 0.5.0"
 gem "better_errors", ">= 0.3.2", :group => :development
 gem "binding_of_caller", ">= 0.6.8", :group => :development
+
+gem 'inherited_resources'
+gem 'doorkeeper', '~> 0.6.2'
+gem 'meta-tags', :require => 'meta_tags',git: 'git://github.com/destinyd/meta-tags.git'
+group :development do
+  gem 'guard-rspec'#, '0.5.5',
+  gem 'debugger', git: 'git://github.com/cldwalker/debugger.git'
+end
+
+case HOST_OS
+when /darwin/i
+  gem 'rb-fsevent', :group => :development
+  gem 'growl', :group => :development
+  gem 'guard-pow', :group => :development
+when /linux/i
+  gem 'libnotify', :group => :development
+  gem 'rb-inotify', :group => :development
+  group :test do
+    gem 'guard-spork'#, '0.3.2'
+    gem 'spork'#, '0.9.0'
+  end
+when /mswin|windows/i
+  gem 'rb-fchange', :group => :development
+  gem 'win32console', :group => :development
+  gem 'rb-notifu', :group => :development
+end
+
