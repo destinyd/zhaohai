@@ -9,7 +9,7 @@ describe "story 1" do
 
     describe "a girl interesting in activity" do
       before(:each) do
-        @girl = FactoryGirl.create(:user)
+        @girl = FactoryGirl.create(:girl)
         @activity_by_rich.interested @girl
       end
 
