@@ -9,6 +9,8 @@ class Activity
 
   has_and_belongs_to_many :interested_users,class_name: 'User',inverse_of: :interested_activities
 
+  has_many :commenteds,class_name: 'Comment',as: :commentable
+
   field :title, type: String, :default => ""
   field :desc, type: String
   validates_presence_of :title

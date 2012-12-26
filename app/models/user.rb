@@ -9,6 +9,9 @@ class User
   has_and_belongs_to_many :invited_activities,class_name: 'Activity',inverse_of: :invited_users
   has_and_belongs_to_many :interested_activities,class_name: 'Activity',inverse_of: :interested_users
 
+  has_many :comments
+  has_many :commenteds,class_name: 'Comment',as: :commentable
+
   embeds_one :userinfo
 
   # Include default devise modules. Others available are:
@@ -54,6 +57,6 @@ class User
   # run 'rake db:mongoid:create_indexes' to create indexes
   index({ email: 1 }, { unique: true, background: true })
   field :name, :type => String
-  validates_presence_of :name
+  validates :name,presence: true, uniqueness: true
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
 end
