@@ -2,7 +2,7 @@
 # More info at https://github.com/guard/guard#readme
 require 'active_support/core_ext'
 
-guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' } do
+guard 'spork', :cucumber => false, :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch(%r{^config/environments/.+\.rb$})
@@ -10,7 +10,7 @@ guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch('Gemfile')
   watch('Gemfile.lock')
   watch('spec/spec_helper.rb')
-  watch('test/test_helper.rb')
+  #watch('test/test_helper.rb')
   watch('spec/support/')
 end
 
@@ -62,18 +62,4 @@ guard 'rspec', :version => 2 do
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
-end
-
-
-guard 'spork',:cucumber => false,
-#:cucumber_env => { 'RAILS_ENV' => 'test' },
-:rspec_env => { 'RAILS_ENV' => 'test' } do
-  watch('config/application.rb')
-  watch('config/environment.rb')
-  watch(%r{^config/environments/.+\.rb$})
-  watch(%r{^config/initializers/.+\.rb$})
-  watch('Gemfile')
-  watch('Gemfile.lock')
-  watch('spec/spec_helper.rb')
-  watch('test/test_helper.rb')
 end
