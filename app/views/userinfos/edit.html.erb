@@ -1,0 +1,8 @@
+<h1>Editing userinfo</h1>
+
+<%= simple_form_for @userinfo do |f| %>
+  <%= render 'form',f:f %>
+  <%= f.button :submit, :class => 'btn-primary' %>
+<% end -%>
+
+<%= link_to t('labels.back'), :back %>

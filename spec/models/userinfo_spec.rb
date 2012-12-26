@@ -3,7 +3,8 @@ require 'spec_helper'
 describe Userinfo do
   describe "#create {}" do
     userinfo = Userinfo.create
-    [:gender,:birth].each do |attr|
+    [:gender#,:birth
+    ].each do |attr|
       it "#{attr} invalid" do
         userinfo.should have(1).error_on(attr)
       end

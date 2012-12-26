@@ -12,7 +12,8 @@ class User
   has_many :comments
   has_many :commenteds,class_name: 'Comment',as: :commentable
 
-  embeds_one :userinfo
+  embeds_one :userinfo#,autobuild: true
+  accepts_nested_attributes_for :userinfo
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -58,5 +59,5 @@ class User
   index({ email: 1 }, { unique: true, background: true })
   field :name, :type => String
   validates :name,presence: true, uniqueness: true
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me,:userinfo_attributes
 end

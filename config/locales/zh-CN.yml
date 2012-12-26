@@ -179,38 +179,15 @@ zh-CN:
       prompt: "请选择"
     submit:
       create: "新增%{model}"
-      update: "更新%{model}"
+      update: "修改%{model}"
       submit: "储存%{model}"
 
-  activerecord:
+  mongoid:
     models:
-      price: "价格"
       user: "用户"
+      userinfo: "用户信息"
       comment: "评论"
-      good: "商品"
-      flash: 广告图片
-      article: 文章
-      integral: 积分
-      review: 评价
-      upload: 图片
-      attr: 属性
-      outlink: 外链
-      price_good: "商品绑定"
-      shop: 店铺
-      brand: 品牌
-      place: 地点
-      cost: 消费
-      bill: 账单
-      contact: 联系方式
-      inventory: 商品
-      msg: 短信息
-      order: 网站订单
-      menu: 菜单
     attributes:
-      price:
-        price: 单价
-        total: 总价
-        locatable: 消费地点
       cost:
         money: 总额
         good: 商品
@@ -235,7 +212,8 @@ zh-CN:
     created_at: '创建于'
     updated_at: '修改于'
     deleted_at: '删除于'
-    finish_at: 截止于
+    finished_at: 截止于
+    started_at: 开始于
     name: '名称'
     email: '邮箱'
     address:  地址
@@ -276,9 +254,15 @@ zh-CN:
     place_name: 地点名称
     body: 内容
     page: 页数
-
-
-
+    realname: 真实姓名
+    birth: 出生日期
+    gender: 性别
+    signature: 签名
+    home: 家乡
+    now: 现在地
+    work: 工作
+    school: 学校
+    current_password: 当前密码
 
   labels:
     back: 返回
@@ -294,6 +278,7 @@ zh-CN:
     accept: 接受
     finish: 完成
     locate: 定位
+    edit_userinfo: 修改详细资料
   notice:
     success: 成功
     create_success: 提交成功

@@ -51,4 +51,3 @@ when /mswin|windows/i
   gem 'win32console', :group => :development
   gem 'rb-notifu', :group => :development
 end
-
