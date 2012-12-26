@@ -9,6 +9,8 @@ class User
   has_and_belongs_to_many :invited_activities,class_name: 'Activity',inverse_of: :invited_users
   has_and_belongs_to_many :interested_activities,class_name: 'Activity',inverse_of: :interested_users
 
+  embeds_one :userinfo
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

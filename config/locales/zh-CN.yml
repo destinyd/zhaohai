@@ -393,27 +393,6 @@ zh-CN:
     next_label: "下一页 &#8594;"
     page_gap: "&hellip;"
 
-  msg:
-    bill:
-      new:
-        title: 你有新的订单
-        body: "<a href='/userhome/orders'>订单操作链接</a>"
-
-  #status{
-  #0:new -> 11 -> 51 -> 52
-  #11:paid
-  #51:user cancel
-  #52:shop cancel
-  #101: done
-  #}
-  status:
-    order:
-      '0': 新建订单
-      '11': 用户已支付
-      '51': 用户取消
-      '52': 商家取消
-      '101': 交易成功
-
-
-  model:
-    menu: '%{place_name}的%{tag}菜单'
+  gender:
+    true: 女
+    false: 男
