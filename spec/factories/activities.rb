@@ -6,8 +6,17 @@ FactoryGirl.define do
     desc "MyString"
     lat 1.0
     lng 2.0
-    user_id 1
-    started_at "2012-12-25 14:57:18"
-    finished_at "2012-12-25 14:57:18"
+    #user_id 1
+    started_at DateTime.now
+    #finished_at DateTime.now + 4.hours
+    #factory :activity_by_rich do
+      #ignore do
+        #users_count 1
+      #end
+
+      #after(:create) do |user, evaluator|
+        #FactoryGirl.create_list(:user, evaluator.users_count, user: user)
+      #end
+    #end
   end
 end

@@ -3,6 +3,12 @@ class User
   rolify
   include Mongoid::Timestamps
 
+  has_many :hold_activities,class_name: 'Activity', :inverse_of => :holder
+  has_and_belongs_to_many :activities,inverse_of: :users
+
+  has_and_belongs_to_many :invited_activities,class_name: 'Activity',inverse_of: :invited_users
+  has_and_belongs_to_many :interested_activities,class_name: 'Activity',inverse_of: :interested_users
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
