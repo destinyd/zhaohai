@@ -1,0 +1,419 @@
+# Chinese (China) translations for Ruby on Rails
+# by tsechingho (http://github.com/tsechingho)
+
+zh-CN:
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b%d日"
+      long: "%Y年%b%d日"
+    day_names: [星期日, 星期一, 星期二, 星期三, 星期四, 星期五, 星期六]
+    abbr_day_names: [日, 一, 二, 三, 四, 五, 六]
+    month_names: [~, 一月, 二月, 三月, 四月, 五月, 六月, 七月, 八月, 九月, 十月, 十一月, 十二月]
+    abbr_month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+    order:
+      - :year
+      - :month
+      - :day
+
+  time:
+    formats:
+      default: "%Y年%b%d日 %A %H:%M:%S %Z"
+      short: "%b%d日 %H:%M"
+      long: "%Y年%b%d日 %H:%M"
+    am: "上午"
+    pm: "下午"
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "半分钟"
+      less_than_x_seconds:
+        one: "不到一秒"
+        other: "不到 %{count} 秒"
+      x_seconds:
+        one: "一秒"
+        other: "%{count} 秒"
+      less_than_x_minutes:
+        one: "不到一分钟"
+        other: "不到 %{count} 分钟"
+      x_minutes:
+        one: "一分钟"
+        other: "%{count} 分钟"
+      about_x_hours:
+        one: "大约一小时"
+        other: "大约 %{count} 小时"
+      x_days:
+        one: "一天"
+        other: "%{count} 天"
+      about_x_months:
+        one: "大约一个月"
+        other: "大约 %{count} 个月"
+      x_months:
+        one: "一个月"
+        other: "%{count} 个月"
+      about_x_years:
+        one: "大约一年"
+        other: "大约 %{count} 年"
+      over_x_years:
+        one: "一年多"
+        other: "%{count} 年多"
+      almost_x_years:
+        one:   "接近一年"
+        other: "接近 %{count} 年"
+    prompts:
+      year:   "年"
+      month:  "月"
+      day:    "日"
+      hour:   "时"
+      minute: "分"
+      second: "秒"
+
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+    currency:
+      format:
+        format: "%u %n"
+        unit: "CN¥"
+        separator: "."
+        delimiter: ","
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+    percentage:
+      format:
+        delimiter: ""
+    precision:
+      format:
+        delimiter: ""
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      decimal_units:
+        format: "%n %u"
+        units:
+          # 10^-21 zepto, 10^-24 yocto
+          atto: "渺"  # 10^-18
+          femto: "飞" # 10^-15 毫微微
+          pico: "漠"  # 10^-12 微微
+          nano: "奈"  # 10^-9 毫微
+          micro: "微" # 10^-6
+          mili: "毫"  # 10^-3 milli
+          centi: "厘" # 10^-2
+          deci: "分"  # 10^-1
+          unit: ""
+          ten:
+            one: "十"
+            other: "十"  # 10^1
+          hundred: "百"  # 10^2
+          thousand: "千" # 10^3 kilo
+          million: "百万" # 10^6 mega
+          billion: "十亿" # 10^9 giga
+          trillion: "兆" # 10^12 tera
+          quadrillion: "千兆" # 10^15 peta
+          # 10^18 exa, 10^21 zetta, 10^24 yotta
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " 和 "
+      last_word_connector: ", 和 "
+    select:
+      prompt: "请选择"
+
+  activemodel:
+    errors:
+      template:
+        header:
+          one: "有 1 个错误发生导致「%{model}」无法被保存。"
+          other: "有 %{count} 个错误发生导致「%{model}」无法被保存。"
+        body: "如下字段出现错误："
+
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      inclusion: "不包含于列表中"
+      exclusion: "是保留关键字"
+      invalid: "是无效的"
+      confirmation: "与确认值不匹配"
+      accepted: "必须是可被接受的"
+      empty: "不能留空"
+      blank: "不能为空字符"
+      too_long: "过长（最长为 %{count} 个字符）"
+      too_short: "过短（最短为 %{count} 个字符）"
+      wrong_length: "长度非法（必须为 %{count} 个字符）"
+      not_a_number: "不是数字"
+      not_an_integer: "必须是整数"
+      greater_than: "必须大于 %{count}"
+      greater_than_or_equal_to: "必须大于或等于 %{count}"
+      equal_to: "必须等于 %{count}"
+      less_than: "必须小于 %{count}"
+      less_than_or_equal_to: "必须小于或等于 %{count}"
+      odd: "必须为单数"
+      even: "必须为双数"
+      taken: "已经被使用"
+      record_invalid: "校验失败: %{errors}"
+      not_exist: 不存在
+      could_not_self: 不能为自己
+      status_change_fault: 状态转换失败
+
+  helpers:
+    select:
+      prompt: "请选择"
+    submit:
+      create: "新增%{model}"
+      update: "更新%{model}"
+      submit: "储存%{model}"
+
+  activerecord:
+    models:
+      price: "价格"
+      user: "用户"
+      comment: "评论"
+      good: "商品"
+      flash: 广告图片
+      article: 文章
+      integral: 积分
+      review: 评价
+      upload: 图片
+      attr: 属性
+      outlink: 外链
+      price_good: "商品绑定"
+      shop: 店铺
+      brand: 品牌
+      place: 地点
+      cost: 消费
+      bill: 账单
+      contact: 联系方式
+      inventory: 商品
+      msg: 短信息
+      order: 网站订单
+      menu: 菜单
+    attributes:
+      price:
+        price: 单价
+        total: 总价
+        locatable: 消费地点
+      cost:
+        money: 总额
+        good: 商品
+        locatable: 消费地点
+      place:
+        name: 地点名称
+      shop:
+        address:  商家地址
+        name: 店铺名称
+      contact:
+        name:  联系人名称
+      upload:
+        image_file_name: 图片
+      msg:
+        to_name: 用户名
+        from: 发送者
+      order:
+        shop: 店铺
+        total: 账单总额
+
+  attributes:
+    created_at: '创建于'
+    updated_at: '修改于'
+    deleted_at: '删除于'
+    finish_at: 截止于
+    name: '名称'
+    email: '邮箱'
+    address:  地址
+    price: 单价
+    unit_price: 单价
+    image: 图片
+    password: 密码
+    remember_me: 记住我
+    desc: 描述
+    parent_id: 隶属于
+    title: 标题
+    content: 内容
+    status: 评价
+    comment: 你的评论
+    type: 类型
+    region_id: 地区
+    amount: 数量
+    user: 提交者
+    tag_list: 标签
+    url: 链接
+    type_id: 类型
+    username: 用户名
+    password_confirmation: 密码验证
+    is_cheap_price: 特价?
+    original_price: 原价
+    unit: 单位
+    norm: 规格
+    addr: 地点地址
+    tel: 地点电话
+    current: 现价
+    original: 原价
+    city_id: 城市
+    telephone: 手机号码
+    phone: 电话号码
+    is_default: 设为默认
+    barcode: 条形码
+    origin: 原产地
+    place_name: 地点名称
+    body: 内容
+    page: 页数
+
+
+
+
+  labels:
+    back: 返回
+    show: 显示
+    sign_in: 登录
+    sign_up: 注册
+    forgot?: 忘记密码？
+    sure?: 你确定
+    edit: 修改
+    del: 删除
+    new: 添加
+    give_up: 放弃
+    accept: 接受
+    finish: 完成
+    locate: 定位
+  notice:
+    success: 成功
+    create_success: 提交成功
+  error:
+    fault: 提交错误
+  titles:
+    new: "新增%{model}"
+    edit: "修改%{model}"
+    index: "%{model}列表"
+  review:
+    pending: 待审
+    s1: '+1'
+    s-1: '睬'
+  title: '神马价-随时随地记消费、查价格'
+  desc: '神马价可以保存您记下您所有的消费，帮您查找您所需要的商品价格，让您更好的把住自己的钱包，享受更多实惠。'
+  keywords: '神马价, 价格, 消费'
+
+  controller:
+    prices: "价格"
+    users: "用户"
+    comments: "评论"
+    goods: "商品"
+    flashes: 广告图片
+    articles: 公告
+    integrals: 积分
+    reviews: 评价
+    uploads: 图片
+    attrs: 属性
+    outlinks: 外链
+    price_goods: "商品绑定"
+    shops: 店铺
+    brands: 品牌
+    places: 地点
+    costs: 消费
+    cities: 城市
+    homes: 用户主页
+    bills: 账单
+    contacts: 联系方式
+    orders: 订单
+    inventories: 店铺商品
+    msgs: 短信息
+    shop_contacts: 店铺联系方式
+    shop_carts: 购物车
+    carts: '购物车'
+    menus: '菜单'
+    userhome:
+      orders: 用户订单
+    shop:
+      orders: 店铺订单
+      home: 店铺信息
+    home: '主页'
+    sessions: 登录
+  action:
+    prices:
+      new: 记账
+      cheapest: 最便宜
+      groupbuy: 团购
+      costs: 实际消费
+      index: 最新
+      just_started: 刚刚开始
+      nearly_finish: 即将结束
+    brands:
+      new: 添加
+    shops:
+      new: 添加
+    goods:
+      new: 添加
+      search: 搜索
+    articles:
+      new: 添加
+    sessions:
+      new: 登录
+    registrations:
+      new: 注册
+    homes:
+      integrals: 积分记录
+    costs:
+      new: 记录消费
+      create: 记录消费
+    places:
+      new: 记录地点
+      create: 记录地点
+      search: 搜索
+    bills:
+      new: 记账
+    msgs:
+      sents: 发件箱
+    new: 添加
+    create: 提交
+    index: 列表
+    edit: 修改
+    show: 显示
+    search: 搜索
+
+  will_paginate:
+    previous_label: "&#8592; 上一页"
+    next_label: "下一页 &#8594;"
+    page_gap: "&hellip;"
+
+  msg:
+    bill:
+      new:
+        title: 你有新的订单
+        body: "<a href='/userhome/orders'>订单操作链接</a>"
+
+  #status{
+  #0:new -> 11 -> 51 -> 52
+  #11:paid
+  #51:user cancel
+  #52:shop cancel
+  #101: done
+  #}
+  status:
+    order:
+      '0': 新建订单
+      '11': 用户已支付
+      '51': 用户取消
+      '52': 商家取消
+      '101': 交易成功
+
+
+  model:
+    menu: '%{place_name}的%{tag}菜单'
