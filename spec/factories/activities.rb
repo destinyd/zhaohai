@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :activity do
-    title "MyString"
-    desc "MyString"
+    title "Drinking in bar"
+    desc "I need a beauty"
     lat 1.0
     lng 2.0
     #user_id 1

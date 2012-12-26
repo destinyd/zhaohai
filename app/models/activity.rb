@@ -39,6 +39,10 @@ class Activity
     self.finished_at = started_at + 4.hours
   end
 
+  after_create do
+    self.users << holder
+  end
+
   def user_name
     holder.try(:name)
   end
