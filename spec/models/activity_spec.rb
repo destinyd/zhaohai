@@ -24,7 +24,7 @@ describe Activity do
   describe "richman hold activity" do
     before(:each) do
       @richman = FactoryGirl.create(:richman)
-      @activity_by_rich = FactoryGirl.create(:activity,holder:@richman)
+      @activity_by_rich = FactoryGirl.create(:activity,user:@richman)
     end
 
     it "#is_open?" do

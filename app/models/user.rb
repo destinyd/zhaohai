@@ -3,8 +3,9 @@ class User
   rolify
   include Mongoid::Timestamps
 
-  has_many :hold_activities,class_name: 'Activity', :inverse_of => :holder
-  has_and_belongs_to_many :activities,inverse_of: :users
+  has_many :activities,class_name: 'Activity', :inverse_of => :user
+
+  has_and_belongs_to_many :in_activities,class_name: 'Activity',inverse_of: :users
 
   has_and_belongs_to_many :invited_activities,class_name: 'Activity',inverse_of: :invited_users
   has_and_belongs_to_many :interested_activities,class_name: 'Activity',inverse_of: :interested_users
@@ -60,4 +61,8 @@ class User
   field :name, :type => String
   validates :name,presence: true, uniqueness: true
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me,:userinfo_attributes
+
+  def to_s
+    name
+  end
 end

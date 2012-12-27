@@ -1,0 +1,34 @@
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<%= simple_form_for(@activity) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :desc %>
+    <%= f.input :started_at,as: :datetime, :start_year => Date.today.year,
+  :end_year => Date.today.year + 1 %>
+    <%= f.input :address %>
+    <%= f.input :lat,as: :hidden %>
+    <%= f.input :lng,as: :hidden %>
+  </div>
+
+  <div class="form-map">
+    <div class="control-group string required"><label class="string required control-label" for="activity_started_at"><abbr title="必填">*</abbr> 地点</label>
+      <div class="controls">
+        <div id="bmap" style="width:100%;height:400px"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  <% if @activity.new_record? %>
+    new_init_map(null);
+  <% else %>
+    edit_init_map(<%= @activity.lat %>, <%= @activity.lng %>);
+  <% end %>
+</script>

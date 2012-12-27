@@ -184,14 +184,18 @@ zh-CN:
 
   mongoid:
     models:
-      user: "用户"
-      userinfo: "用户信息"
-      comment: "评论"
+      user: 用户
+      userinfo: 用户信息
+      activity: 活动
+      comment: 评论
     attributes:
-      cost:
-        money: 总额
-        good: 商品
-        locatable: 消费地点
+      activity:
+        title: 活动标题
+        desc: 活动描述
+        started_at: 活动开始时间
+        finished_at: 活动结束时间
+        address: 活动地址
+        user: 举办者
       place:
         name: 地点名称
       shop:
@@ -269,9 +273,11 @@ zh-CN:
     show: 显示
     sign_in: 登录
     sign_up: 注册
+    logout: 登出
     forgot?: 忘记密码？
     sure?: 你确定
     edit: 修改
+    edit_account: 修改资料
     del: 删除
     new: 添加
     give_up: 放弃
@@ -279,6 +285,7 @@ zh-CN:
     finish: 完成
     locate: 定位
     edit_userinfo: 修改详细资料
+    hello: 你好
   notice:
     success: 成功
     create_success: 提交成功
@@ -381,3 +388,6 @@ zh-CN:
   gender:
     true: 女
     false: 男
+
+  website:
+    title: 找嗨

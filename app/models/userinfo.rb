@@ -1,6 +1,8 @@
 class Userinfo
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::MultiParameterAttributes
+
   field :realname, type: String
   field :gender, type: Boolean#, :default => false
   field :status, type: String

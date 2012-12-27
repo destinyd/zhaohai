@@ -4,7 +4,7 @@ describe "story 1" do
   describe "a richman hold a activity" do
     before(:each) do
       @richman = FactoryGirl.create(:richman)
-      @activity_by_rich = FactoryGirl.create(:activity,holder:@richman)
+      @activity_by_rich = FactoryGirl.create(:activity,user:@richman)
     end
 
     describe "a girl interesting in activity" do
@@ -35,7 +35,7 @@ describe "story 1" do
         end
 
         it "girl activities include activity" do
-          @girl.activities.should include(@activity_by_rich)
+          @girl.in_activities.should include(@activity_by_rich)
         end
       end
 

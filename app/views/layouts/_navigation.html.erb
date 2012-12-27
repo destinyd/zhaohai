@@ -1,26 +1,40 @@
-<%= link_to "Zhaohai", root_path, :class => 'brand' %>
-<ul class="nav">
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to 'Login', new_user_session_path %>
-    </li>
-  <% end %>
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Edit account', edit_user_registration_path %>
-    </li>
-    <% if current_user.has_role? :admin %>
+<%= link_to t('website.title'), root_path, :class => 'brand' %>
+<div class="nav-collapse collapse">
+  <ul class="nav pull-right">
+    <% if user_signed_in? %>
       <li>
-      <%= link_to 'Admin', users_path %>
+        <a href="#" class="navbar-link"><%= current_user.name %></a>
+      </li>
+      <li>
+        <%= link_to t('labels.edit_account'), edit_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to t('labels.logout'), destroy_user_session_path, :method=>'delete' %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to t('labels.sign_in'), new_user_session_path %>
+      </li>
+      <li>
+        <%= link_to t('labels.sign_up'), new_user_registration_path %>
       </li>
     <% end %>
-  <% else %>
+    <% if user_signed_in? and current_user.has_role? :admin %>
+      <li>
+        <%= link_to 'Admin', users_path %>
+      </li>
+    <% end %>
+  </ul>
+
+  <ul class="nav">
     <li>
-    <%= link_to 'Sign up', new_user_registration_path %>
+      <%= link_to t('mongoid.models.activity'), activities_path %>
     </li>
-  <% end %>
-</ul>
+    <li>
+      <form action="http://google.com/search" method="get" target="_blank" class="navbar-form">
+        <input type="hidden" name="q" value="site:test">
+        <input type="text" name="q" class="search" placeholder="Search" x-webkit-speech="">
+      </form>
+    </li>
+  </ul>
+</div>

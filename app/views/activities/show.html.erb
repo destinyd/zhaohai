@@ -1,0 +1,21 @@
+<div class="span7">
+  <%= p_field @activity,:title %>
+  <%= p_field @activity,:desc %>
+  <%= p_field @activity,:user %>
+  <%= p_field @activity,:started_at%>
+  <%= p_field @activity,:finished_at%>
+  <p><b>参与者:</b>
+    <% @activity.users.each do |user| %>
+      <%= link_to user,user %>
+    <% end -%>
+  </p>
+</div>
+<div class="span4">
+  <div id="bmap"  style="width:100%;height:200px">
+  </div>
+</div>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<script type="text/javascript">
+  show_init_map(<%= @activity.lat %>, <%= @activity.lng %>);
+</script>
