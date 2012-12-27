@@ -30,7 +30,7 @@ class Activity
     :lat => 1,
     :lng => 1
   },
-  { :unique => true})
+  { :unique => true, background: true})
 
   attr_accessible :title, :desc, :lat, :lng, :started_at#, :finished_at
 
