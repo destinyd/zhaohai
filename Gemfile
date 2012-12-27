@@ -30,6 +30,7 @@ gem 'inherited_resources'
 gem 'doorkeeper', '~> 0.6.2'
 gem 'meta-tags', :require => 'meta_tags',git: 'git://github.com/destinyd/meta-tags.git'
 gem 'mongoid_taggable_on'
+gem 'random_data'
 group :development do
   gem 'guard-rspec'#, '0.5.5',
   gem 'debugger', git: 'git://github.com/cldwalker/debugger.git'

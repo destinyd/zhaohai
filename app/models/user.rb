@@ -7,11 +7,14 @@ class User
 
   has_and_belongs_to_many :in_activities,class_name: 'Activity',inverse_of: :users
 
-  has_and_belongs_to_many :invited_activities,class_name: 'Activity',inverse_of: :invited_users
+  has_and_belongs_to_many :invited_activities,class_name: 'Activity',inverse_of: :invited_users, autosave: true
   has_and_belongs_to_many :interested_activities,class_name: 'Activity',inverse_of: :interested_users
 
   has_many :comments
   has_many :commenteds,class_name: 'Comment',as: :commentable
+
+  has_and_belongs_to_many :following,class_name: 'User',inverse_of: :followers
+  has_and_belongs_to_many :followers,class_name: 'User',inverse_of: :following
 
   embeds_one :userinfo#,autobuild: true
   accepts_nested_attributes_for :userinfo
@@ -64,5 +67,15 @@ class User
 
   def to_s
     name
+  end
+
+  def follow!(user)
+    if self.id != user.id && !self.following.include?(user)
+      self.following << user
+    end
+  end
+
+  def unfollow!(user)
+    self.following.delete(user)
   end
 end

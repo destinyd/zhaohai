@@ -100,4 +100,27 @@ describe User do
 
   end
 
+  describe "following system" do
+    before(:each) do
+      @user1 = FactoryGirl.create(:user)
+      @user2 = FactoryGirl.create(:user)
+      @user3 = FactoryGirl.create(:user)
+      @user1.follow! @user2
+      @user1.follow! @user3
+      @user2.follow! @user3
+      @users = [@user1,@user2,@user3]
+    end
+
+    3.times do |index|
+      it "@user#{index + 1}.following should #{3-index-1}" do
+        @users[index].following.count.should == (3-index -1)
+      end
+      it "@user#{index+1}.followers should #{index}" do
+        @users[index].followers.count.should == (index)
+      end
+    end
+
+
+  end
+
 end
