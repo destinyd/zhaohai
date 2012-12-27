@@ -12,3 +12,6 @@ zh-CN:
         gender:
           'false': '男'
           'true': '女'
+    placeholders:
+      activity:
+        type_list: 例如:桌游,鸡尾酒

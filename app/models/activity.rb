@@ -2,6 +2,7 @@ class Activity
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
+  include Mongoid::TaggableOn
 
   belongs_to :user, :inverse_of => :activities#,class_name: 'User'
 
@@ -25,6 +26,8 @@ class Activity
   field :started_at, type: DateTime
   field :finished_at, type: DateTime
 
+  taggable_on :types
+
   index({
     :title => 1,
   },
@@ -40,7 +43,7 @@ class Activity
   },
   { background: true})
 
-  attr_accessible :title, :desc, :lat, :lng, :started_at,:address#, :finished_at
+  attr_accessible :title, :desc, :lat, :lng, :started_at,:address,:type_list#, :finished_at
 
   scope :opening,where("finished_at > NOW()")
   scope :running,opening.where("started_at <  NOW()")

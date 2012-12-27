@@ -1,4 +1,9 @@
 <div class="span7">
+  <p><b>活动类型:</b>
+    <% @activity.types.each do |type| %>
+      <%= type %>
+    <% end -%>
+  </p>
   <%= p_field @activity,:title %>
   <%= p_field @activity,:desc %>
   <%= p_field @activity,:user %>

@@ -41,7 +41,8 @@ marker_form = null
 function marker_for_form(point){
   if(marker_form == null){
     marker_form = new BMap.Marker(point);        // 创建标注  
-    map.addOverlay(marker_form);                     // 将标注添加到地图中
+    map.addOverlay(marker_form);// 将标注添加到地图中
+    map.panTo(point);
   }
   else{
     marker_form.setPosition(point)
@@ -121,8 +122,7 @@ function init_form_map(id,point){
 function show_init_map(lat,lng){
   var point = new BMap.Point(lng, lat);  // 创建点坐标
   show_map('bmap',point);        //显示google地图
-  marker_form = new BMap.Marker(point);        // 创建标注  
-  map.addOverlay(marker_form);                     // 将标注添加到地图中
+  marker_for_form(point);
   map.setZoom(17);
 }
 

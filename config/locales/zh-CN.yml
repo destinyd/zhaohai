@@ -196,6 +196,7 @@ zh-CN:
         finished_at: 活动结束时间
         address: 活动地址
         user: 举办者
+        type_list: 活动类型
       place:
         name: 地点名称
       shop:
