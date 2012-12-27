@@ -1,10 +1,10 @@
 <div class="span7">
+  <h1><%= @activity.title %></h1>
   <p><b>活动类型:</b>
     <% @activity.types.each do |type| %>
-      <%= type %>
+      <%= link_to type,type_activities_path(type_name: type) %>
     <% end -%>
   </p>
-  <%= p_field @activity,:title %>
   <%= p_field @activity,:desc %>
   <%= p_field @activity,:user %>
   <%= p_field @activity,:started_at%>

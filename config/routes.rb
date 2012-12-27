@@ -6,5 +6,6 @@ Zhaohai::Application.routes.draw do
   devise_for :users
   resources :users
   resources :activities
+  get '/activities/type/:type_name' => 'activities#type',as: :type_activities
   #resources :userinfos
 end
