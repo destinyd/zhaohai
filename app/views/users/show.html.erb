@@ -1,3 +1,22 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<h3>用户</h3>
+<p>用户名: <%= @user.name %></p>
+
+<% if @user.followers.include?(current_user) %>
+  <button class="btn btn-info l" disabled>
+    <% if @user.friend.include?(current_user) %>
+      <%= labels(:friend) %>
+    <% else %>
+      <%= labels(:followinged) %>
+    <% end %>
+  </button>
+  <%= button_to t('labels.cancel'),unfollow_user_path(@user),class:'btn btn-danger',confirm:t('labels.sure?') %>
+<% else %>
+  <% if @user.following.include?(current_user) %>
+    <button class="btn btn-info l" disabled>
+      <%= labels(:followered) %>
+    </button>
+    <%= button_to t('labels.befriend'),follow_user_path(@user),class:'btn btn-primary' %>
+  <% else %>
+    <%= button_to t('labels.following'),follow_user_path(@user),class:'btn btn-primary' %>
+  <% end %>
+<% end %>

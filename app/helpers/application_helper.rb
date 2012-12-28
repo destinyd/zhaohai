@@ -21,5 +21,9 @@ module ApplicationHelper
     end
   end
 
+  def labels(p)
+    t("labels.#{p}")
+  end
+
 
 end

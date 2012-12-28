@@ -287,6 +287,17 @@ zh-CN:
     locate: 定位
     edit_userinfo: 修改详细资料
     hello: 你好
+    activity: 活动
+    befriend: 成为好友
+    friend: 好友
+    followinged: 已关注
+    followered: 被关注
+    following: 关注
+    followers: 粉丝
+    relationship: 关系
+    follow: 关注
+    unfollow: 取消关注
+    cancel: 取消
   notice:
     success: 成功
     create_success: 提交成功

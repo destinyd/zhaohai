@@ -122,5 +122,21 @@ describe User do
 
 
   end
+  describe "friend system" do
+    before(:each) do
+      @user1 = FactoryGirl.create(:user)
+      @user2 = FactoryGirl.create(:user)
+      @user1.follow! @user2
+      @user2.follow! @user1
+    end
+
+    it "@user1.friend include @user2 after follow each other" do
+      @user1.friend.should include(@user2)
+    end
+    it "@user2.friend include @user1 after follow each other" do
+      @user2.friend.should include(@user1)
+    end
+  end
+
 
 end

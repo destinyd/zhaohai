@@ -78,4 +78,9 @@ class User
   def unfollow!(user)
     self.following.delete(user)
   end
+
+  def friend
+    following & followers
+  end
+
 end

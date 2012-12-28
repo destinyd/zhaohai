@@ -10,6 +10,9 @@ class Ability
     else
       cannot :manage, :all, :self_managed => true
       can :read, :all
+      can :relationship,User
+      can :follow,User
+      can :unfollow,User
     end
     #
     # The first argument to `can` is the action you are giving the user permission to do.
