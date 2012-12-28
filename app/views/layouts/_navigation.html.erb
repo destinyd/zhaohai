@@ -28,7 +28,13 @@
 
   <ul class="nav">
     <li>
-      <%= link_to t('labels.activity'), activities_path %>
+      <%= link_to labels(:opening) +labels(:activity), activities_path %>
+    </li>
+    <li>
+      <%= link_to labels(:expired) +labels(:activity), expired_activities_path %>
+    </li>
+    <li>
+      <%= link_to labels(:new_activity), new_activity_path %>
     </li>
     <li>
       <%= link_to t('labels.relationship'), relationship_users_path %>

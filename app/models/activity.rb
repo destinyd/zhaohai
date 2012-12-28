@@ -45,8 +45,9 @@ class Activity
 
   attr_accessible :title, :desc, :lat, :lng, :started_at,:address,:type_list#, :finished_at
 
-  scope :opening,where("finished_at > NOW()")
-  scope :running,opening.where("started_at <  NOW()")
+  scope :opening,where(:finished_at.gt => Time.now)
+  scope :running,opening.where(:started_at.lt =>  Time.now)
+  scope :expired,where(:finished_at.lt =>  Time.now)
 
   def to_s
     title
