@@ -32,6 +32,8 @@ gem 'meta-tags', :require => 'meta_tags',git: 'git://github.com/destinyd/meta-ta
 gem 'mongoid_taggable_on'
 gem 'random_data'
 gem 'kaminari'
+#gem 'bootstrap-kaminari-views'
+gem 'kaminari-bootstrap'
 group :development do
   gem 'guard-rspec'#, '0.5.5',
   gem 'debugger', git: 'git://github.com/cldwalker/debugger.git'

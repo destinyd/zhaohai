@@ -13,6 +13,7 @@ Zhaohai::Application.routes.draw do
   end
   resources :activities do
     get :expired, on: :collection
+    get :running, on: :collection
   end
   get '/activities/type/:type_name' => 'activities#type',as: :type_activities
   #resources :userinfos

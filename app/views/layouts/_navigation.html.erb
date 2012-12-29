@@ -28,10 +28,21 @@
 
   <ul class="nav">
     <li>
-      <%= link_to labels(:opening) +labels(:activity), activities_path %>
+      <%= link_to labels(:activity), activities_path,method: :get %>
     </li>
     <li>
-      <%= link_to labels(:expired) +labels(:activity), expired_activities_path %>
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#menu_activities">
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to labels(:running) +labels(:activity), running_activities_path %>
+        </li>
+        <li>
+          <%= link_to labels(:expired) +labels(:activity), expired_activities_path %>
+        </li>
+
+      </ul>
     </li>
     <li>
       <%= link_to labels(:new_activity), new_activity_path %>
