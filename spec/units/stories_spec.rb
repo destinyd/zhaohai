@@ -18,12 +18,12 @@ describe "story 1" do
       end
 
       it "#accept will be true" do
-        @activity_by_rich.accept(@richman, @girl).should be_true
+        @activity_by_rich.accept(@girl).should be_true
       end
 
       describe "girl in activity users after admin accept" do
         before(:each) do
-          @activity_by_rich.accept(@richman, @girl)
+          @activity_by_rich.accept(@girl)
         end
 
         it "#interested_users not include girl" do

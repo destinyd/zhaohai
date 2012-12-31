@@ -16,6 +16,8 @@ class User
   has_and_belongs_to_many :following,class_name: 'User',inverse_of: :followers
   has_and_belongs_to_many :followers,class_name: 'User',inverse_of: :following
 
+  has_many :activity_requests
+
   embeds_one :userinfo#,autobuild: true
   accepts_nested_attributes_for :userinfo
 

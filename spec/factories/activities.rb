@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :activity do
-    title "Drinking in bar"
+    title "Drinking in soho bar"
     desc "I need a beauty"
-    lat 1.0
-    lng 2.0
+    lat 24.319738 #soho bar
+    lng 109.418935 #
     #user_id 1
     started_at DateTime.now
     #finished_at DateTime.now + 4.hours

@@ -12,18 +12,56 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def p_field record,attr_name
+  def render_field record,attr_name
     if record.send(attr_name).blank?
       ''
     else 
-      content = "<p><b>#{record.class.human_attribute_name(attr_name)}:</b> #{record.send(attr_name)} </p>"
-      raw content
+      render_field_with_dl dt_field_name(record,attr_name),
+        dd_field(record,attr_name)
     end
   end
+
+  def dt_field_name record,attr_name
+    content_tag(:dt,
+                i18n_field_name(record,attr_name))
+  end
+
+  def i18n_field_name record,attr_name
+    record.class.human_attribute_name(attr_name)
+  end
+
+  def dd_field record,attr_name
+    content_tag(:dd,record.send(attr_name))
+  end
+
+  def dt content
+    content_tag(:dt,content)
+  end
+
+  def dd content
+    content_tag(:dd,content)
+  end
+
+  def render_field_with_dl dt,dd=nil,&block
+    content_tag :dl,class:'dl-horizontal' do
+      [
+        self.dt(dt),
+        self.dd(dd.blank? ? capture(&block) : dd)
+      ].join.html_safe
+    end unless dd.blank? and !block
+  end
+
+  def render_dl dt,dd=nil,&block
+    content_tag :dl do
+      [
+        dt,
+        dd.blank? ? capture(&block) : dd
+      ].join.html_safe
+    end unless dd.blank? and !block
+  end
+
 
   def labels(p)
     t("labels.#{p}")
   end
-
-
 end

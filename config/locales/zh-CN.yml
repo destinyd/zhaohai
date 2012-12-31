@@ -197,6 +197,10 @@ zh-CN:
         address: 活动地址
         user: 举办者
         type_list: 活动类型
+        users: 参与者
+        invited_users: 邀请了的人
+        interested_users: 感兴趣的人
+        status: 活动状态
       place:
         name: 地点名称
       shop:
@@ -285,6 +289,7 @@ zh-CN:
     new: 添加
     give_up: 放弃
     accept: 接受
+    deny: 拒绝
     finish: 完成
     locate: 定位
     hello: 你好
@@ -304,6 +309,10 @@ zh-CN:
     unfollow: 取消关注
     cancel: 取消
     new_activity: 组织活动
+    action: 操作
+    join: 加入
+    activity_requests: 请求者列表
+    close: 关闭
   notice:
     success: 成功
     create_success: 提交成功
@@ -406,6 +415,12 @@ zh-CN:
   gender:
     true: 女
     false: 男
+
+  activity_status:
+    opening: 开放
+    running: 进行中
+    expired: 过期
+    closed: 关闭
 
   website:
     title: 找嗨

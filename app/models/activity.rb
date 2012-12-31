@@ -14,6 +14,8 @@ class Activity
 
   has_many :commenteds,class_name: 'Comment',as: :commentable
 
+  has_many :activity_requests
+
   field :title, type: String, :default => ""
   field :desc, type: String
   field :address, type: String
@@ -25,6 +27,7 @@ class Activity
   #field :user_id, type: Integer
   field :started_at, type: DateTime
   field :finished_at, type: DateTime
+  field :closed_at, type: DateTime
 
   taggable_on :types
 
@@ -45,9 +48,10 @@ class Activity
 
   attr_accessible :title, :desc, :lat, :lng, :started_at,:address,:type_list#, :finished_at
 
-  scope :opening,where(:finished_at.gt => Time.now)
+  scope :opening,where(:finished_at.gt => Time.now,:closed_at => nil)
   scope :running,opening.where(:started_at.lt =>  Time.now)
   scope :expired,where(:finished_at.lt =>  Time.now)
+  scope :recent,order_by(created_at: :desc)
 
   def to_s
     title
@@ -61,17 +65,31 @@ class Activity
     user
   end
 
+  def admins
+    [user]
+  end
+
+  def could_join?(user)
+    [:opening,:running].include?(self.status) and 
+    (user.nil? or 
+     (!admins.include?(user) and !users.include?(user) and !interested_users.include?(user))
+    )
+
+  end
+
+  def could_manage?(user)
+    [:opening,:running].include?(self.status) and admins.include?(user)
+  end
+
   def interested(u)
     interested_users << u unless interested_users.include?(u)
   end
 
-  def accept(own,user)
-    if own == admin and is_open?
-      if interested_users.include? user
-        interested_users.delete user
-        self.users << user
-        true
-      end
+  def accept(user)
+    if is_open? and interested_users.include? user
+      interested_users.delete user
+      self.users << user
+      true
     end
   end
 
@@ -81,7 +99,32 @@ class Activity
 
   def is_open?
     t = DateTime.now
-    t > started_at and t < finished_at
+    t < finished_at
+  end
+
+  def is_run?
+    t = DateTime.now
+    is_open? and t > started_at
+  end
+
+  def is_closed?
+    !closed_at.nil?
+  end
+
+  def close
+    update_attribute :closed_at,Time.now if closed_at.nil?
+  end
+
+  def status
+    if is_closed?
+      :closed
+    else
+      is_open? ? is_run? ? :running : :opening : :expired
+    end
+  end
+
+  def human_status
+    I18n.t("activity_status."+ status.to_s)
   end
 
   protected

@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem "unicorn", ">= 4.3.1", :group => :production
 gem "mongoid", ">= 3.0.15"
 gem "rspec-rails", ">= 2.11.4", :group => [:development, :test]
+gem "rspec-cells", :group => [:development, :test]
 gem "capybara", ">= 2.0.1", :group => :test
 gem "database_cleaner", ">= 0.9.1", :group => :test
 gem "mongoid-rspec", ">= 1.5.5", :group => :test
@@ -34,6 +35,7 @@ gem 'random_data'
 gem 'kaminari'
 #gem 'bootstrap-kaminari-views'
 gem 'kaminari-bootstrap'
+gem "cells"
 group :development do
   gem 'guard-rspec'#, '0.5.5',
   gem 'debugger', git: 'git://github.com/cldwalker/debugger.git'

@@ -27,3 +27,23 @@
 .activities input.string[type=text]{
   width: 97%;
 }
+
+.tl { text-align: left }
+.tr { text-align: right }
+.tc { text-align: center }
+.tb { text-align: block }
+
+.divider {
+    border-bottom: 1px dashed #cccccc;
+    clear: both;
+    height: 1px;
+    margin-bottom: 20px;
+}
+
+.activity{
+  .desc{ text-indent: 2em;}
+  .activity_bottom{
+    *{float:left}
+    dl{margin-right: 10px;}
+  }
+}

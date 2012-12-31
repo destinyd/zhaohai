@@ -1,20 +1,31 @@
-<table>
-  <tr>
-    <th>活动标题</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @activities.each do |activity| %>
-  <tr>
-    <td><%= link_to activity,activity %></td>
-    <td><%= link_to t('labels.show'), activity %></td>
-    <td><%= link_to t('labels.edit'), edit_activity_path(activity) %></td>
-    <td><%= link_to t('labels.destroy'), activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <div class="activity">
+    <h2><%= link_to activity.title,activity %></h2>
+    <p class="desc"><%= activity.desc %> </p>
+    <div>
+      <div class="pull-right activity_bottom">
+        <dl>
+          <dt>人数</dt>
+          <dd><%= activity.users.count %>/<%= activity.interested_users.count %></dd>
+        </dl>
+        <%= render_dl dt(i18n_field_name(activity,:type_list)),activity.types.collect{|type| dd(link_to(type,type_activities_path(type_name: type)))}.join.html_safe %>
+        <dl>
+          <dt>地址</dt>
+          <dd><addr><em><%= activity.address %></em></addr></dd>
+        </dl>
+        <dl>
+          <dt>举办者</dt>
+          <dd><%= link_to activity.user,activity.user %></dd>
+        </dl>
+        <dl>
+          <dt>活动开始时间</dt>
+          <dd><%= activity.started_at %></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="divider"></div>
+  </div>
+<% end -%>
 <div class="pull-right">
   <%= paginate @activities %>
 </div>

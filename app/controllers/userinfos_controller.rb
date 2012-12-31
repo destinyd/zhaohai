@@ -1,5 +1,5 @@
 class UserinfosController < InheritedResources::Base
-  actions :all,except: [:destroy,:new,:create]
+  actions :all,except: [:destroy,:new,:create,:index]
   before_filter :authenticate_user!, only: [:new,:create,:edit,:update]
 
   def index

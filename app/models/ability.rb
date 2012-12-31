@@ -5,6 +5,7 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     user ||= User.new # guest user (not logged in)
+      can :read, :all
     if user.has_role? :admin
       can :manage, :all
     else
@@ -13,6 +14,18 @@ class Ability
       can :relationship,User
       can :follow,User
       can :unfollow,User
+
+      can [:new,:create],ActivityRequest do |ar|
+        ar.could_join?(user)
+      end
+
+      can [:accept,:deny],ActivityRequest do |ar|
+        ar.activity.could_manage?(user)
+      end
+
+      can :update, Activity do |activity|
+        activity.could_manage?(user)
+      end
     end
     #
     # The first argument to `can` is the action you are giving the user permission to do.

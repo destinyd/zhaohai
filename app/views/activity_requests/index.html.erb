@@ -1,0 +1,19 @@
+<h1><%= link_to @activity,@activity %> 请求信息</h1>
+
+<table class="table">
+  <tr>
+    <th>请求信息</th>
+    <th>请求者</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @activity_requests.each do |activity_request| %>
+  <tr>
+    <td><%= activity_request.text %></td>
+    <td><%= link_to activity_request.user,activity_request.user %></td>
+    <td><%= button_to labels(:accept),accept_activity_activity_request_path(@activity,activity_request),class:'btn-primary',disabled:activity_request.deal_at if can?(:accept,activity_request) %></td>
+    <td><%= button_to labels(:deny),deny_activity_activity_request_path(@activity,activity_request),class:'btn-danger',disabled:activity_request.deal_at if can?(:accept,activity_request) %></td>
+  </tr>
+<% end %>
+</table>
