@@ -47,7 +47,7 @@ class ActivityRequest
   end
 
   after_create do 
-    activity.interested(user)
+    activity.interested(self.user)
     activity.admins.each do |admin|
       admin.notifications.create!({
         interesting_user: self.user,

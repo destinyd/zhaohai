@@ -76,6 +76,10 @@ class User
   def follow!(user)
     if self.id != user.id && !self.following.include?(user)
       self.following << user
+      user.notifications.create!({
+        follower: self
+      },
+        Notification::Follower)
     end
   end
 

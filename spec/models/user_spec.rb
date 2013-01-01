@@ -119,9 +119,20 @@ describe User do
         @users[index].followers.count.should == (index)
       end
     end
-
-
   end
+
+  describe "following notification system" do
+    before(:each) do
+      @user1 = FactoryGirl.create(:user)
+      @user2 = FactoryGirl.create(:user)
+      @user1.follow! @user2
+    end
+
+    it "@user2 will get follower notification" do
+      @user2.notifications.first.class.should == Notification::Follower
+    end
+  end
+
   describe "friend system" do
     before(:each) do
       @user1 = FactoryGirl.create(:user)

@@ -11,4 +11,9 @@ class NotificationCell < Cell::Rails
     render
   end
 
+  def follower(args)
+    @notification = args[:notification]
+    render
+  end
+
 end
