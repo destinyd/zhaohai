@@ -3,8 +3,8 @@ class ActivityRequestsController < InheritedResources::Base
   belongs_to :activity
   authorize_resource
   before_filter :authenticate_user!, except: [:type,:expired,:running,:index]
-  respond_to :html
-  respond_to :js, only: [:new,:create]
+  respond_to :html,except: [:accept,:deny]
+  respond_to :js, only: [:new,:create,:accept,:deny]
 
   def create
     @activity_request = current_user.activity_requests.create(
@@ -17,14 +17,22 @@ class ActivityRequestsController < InheritedResources::Base
 
   def accept
     @activity_request = ActivityRequest.find(params[:id])
-    @activity_request.accept if can?(:accept,@activity_request)
-    redirect_to :back
+    @activity_request.accept_by(current_user) if can?(:accept,@activity_request)
+    begin
+      current_user.notifications.find(params[:notification_id]).destroy
+    rescue
+    end
+    render :remove_notification
   end
 
   def deny
     @activity_request = ActivityRequest.find(params[:id])
-    @activity_request.deny if can?(:deny,@activity_request)
-    redirect_to :back
+    @activity_request.deny_by(current_user) if can?(:deny,@activity_request)
+    begin
+      current_user.notifications.find(params[:notification_id]).destroy
+    rescue
+    end
+    render :remove_notification
   end
 
   protected

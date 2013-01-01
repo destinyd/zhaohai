@@ -26,6 +26,7 @@ Zhaohai::Application.routes.draw do
       end
     end
   end
+  resources :notifications ,except: [:edit,:update,:new,:create]
   get '/activities/type/:type_name' => 'activities#type',as: :type_activities
 
   #resources :userinfos

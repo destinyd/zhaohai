@@ -6,6 +6,9 @@
         <a href="#" class="navbar-link"><%= current_user.name %></a>
       </li>
       <li>
+        <%= link_to current_user.notifications.unread.count,notifications_path,title:'未读提示' %>
+      </li>
+      <li>
         <%= link_to t('labels.edit_account'), edit_user_registration_path %>
       </li>
       <li>

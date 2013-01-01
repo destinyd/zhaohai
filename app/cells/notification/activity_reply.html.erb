@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="span8">
+    你感兴趣的活动《<%= link_to @notification.activity,@notification.activity %>》管理人：<%= link_to @notification.reply_admin,@notification.reply_admin %>
+  <%= labels(@notification.reply_status) %>了你的请求。
+    <% if @notification.reply_status == :accept %>
+      请于<em class="red"><%= @notification.activity.started_at %></em>到<%= @notification.activity.address %>参加。
+    <% end %>
+  </div>
+  <div class="span2">
+  </div>
+</div>
+

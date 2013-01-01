@@ -21,6 +21,8 @@ class User
   embeds_one :userinfo#,autobuild: true
   accepts_nested_attributes_for :userinfo
 
+  embeds_many :notifications, :class_name => 'Notification::Base'
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

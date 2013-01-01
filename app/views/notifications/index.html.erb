@@ -1,0 +1,19 @@
+<div class="row" id="notifications">
+  <div class="span11">
+    <% @notifications.each do |notification| %>
+      <div class="row" id="<%= notification.id%>">
+        <div class="span10">
+          <%= render_cell :notification,notification.type_name, notification: notification %>
+        </div>
+        <div class="span1">
+          <%= link_to t('labels.del'), notification_path(notification), method: :delete, data: { confirm: t('labels.sure?') },class:'btn btn-danger' %>
+        </div>
+        <div class="divider">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="pull-right">
+  <%= paginate @notifications %>
+</div>

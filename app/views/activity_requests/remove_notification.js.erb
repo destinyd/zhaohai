@@ -1,0 +1,3 @@
+<% unless params[:notification_id].blank? %>
+  $('#<%= params[:notification_id] %>').fadeOut("slow");
+<% end %>

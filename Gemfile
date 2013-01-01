@@ -27,20 +27,6 @@ gem "figaro", ">= 0.5.0"
 gem "better_errors", ">= 0.3.2", :group => :development
 gem "binding_of_caller", ">= 0.6.8", :group => :development
 
-gem 'inherited_resources'
-gem 'doorkeeper', '~> 0.6.2'
-gem 'meta-tags', :require => 'meta_tags',git: 'git://github.com/destinyd/meta-tags.git'
-gem 'mongoid_taggable_on'
-gem 'random_data'
-gem 'kaminari'
-#gem 'bootstrap-kaminari-views'
-gem 'kaminari-bootstrap'
-gem "cells"
-group :development do
-  gem 'guard-rspec'#, '0.5.5',
-  gem 'debugger', git: 'git://github.com/cldwalker/debugger.git'
-end
-
 case HOST_OS
 when /darwin/i
   gem 'rb-fsevent', :group => :development
@@ -57,4 +43,22 @@ when /mswin|windows/i
   gem 'rb-fchange', :group => :development
   gem 'win32console', :group => :development
   gem 'rb-notifu', :group => :development
+end
+
+gem 'inherited_resources'
+gem 'doorkeeper', '~> 0.6.2'
+gem 'meta-tags', :require => 'meta_tags',git: 'git://github.com/destinyd/meta-tags.git'
+gem 'mongoid_taggable_on'
+gem 'random_data'
+gem 'kaminari'
+#gem 'bootstrap-kaminari-views'
+gem 'kaminari-bootstrap'
+gem "cells"
+#gem 'resque'
+#gem 'delayed_job_mongoid'
+#gem 'daemons'
+gem "symbolize", :require => "symbolize/mongoid"
+group :development do
+  gem 'guard-rspec'#, '0.5.5',
+  gem 'debugger', git: 'git://github.com/cldwalker/debugger.git'
 end

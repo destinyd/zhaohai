@@ -82,7 +82,9 @@ class Activity
   end
 
   def interested(u)
-    interested_users << u unless interested_users.include?(u)
+    unless interested_users.include?(u)
+      interested_users << u
+    end
   end
 
   def accept(user)
