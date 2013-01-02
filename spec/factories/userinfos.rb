@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :userinfo do
     realname "someone"
-    gender true
+    gender :female
     status "nothing"
     home "home"
     now "near home"
@@ -13,12 +13,12 @@ FactoryGirl.define do
 
     trait :male do
       realname "male"
-      gender false
+      gender :male
     end
 
     trait :female do
       realname "female"
-      gender true
+      gender :female
     end
 
     trait :richman do

@@ -1,21 +1,9 @@
-<h1>Listing userinfos</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @userinfos.each do |userinfo| %>
-  <tr>
-    <td><%= link_to t('labels.show'), userinfo %></td>
-    <td><%= link_to t('labels.edit'), edit_userinfo_path(userinfo) %></td>
-    <td><%= link_to t('labels.destroy'), userinfo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<h3>用户列表</h3>
+<div>
+ <% @userinfos.each do |userinfo| %>
+  <p><%=link_to userinfo.name, userinfo %></p>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Userinfo', new_userinfo_path %>
+</div>
+<div class="pull-right">
+  <%= paginate @userinfos %>
+</div>

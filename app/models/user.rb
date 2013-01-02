@@ -18,7 +18,8 @@ class User
 
   has_many :activity_requests
 
-  embeds_one :userinfo#,autobuild: true
+  #embeds_one :userinfo#,autobuild: true
+  has_one :userinfo#,autobuild: true
   accepts_nested_attributes_for :userinfo
 
   embeds_many :notifications, :class_name => 'Notification::Base'

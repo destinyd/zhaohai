@@ -4,4 +4,8 @@ class City
   validates :name, presence: true
   belongs_to :province
   index({ name: 1,province_id: 1 }, {  background: true })
+
+  def to_s
+    [province.name,name].join(' ')
+  end
 end

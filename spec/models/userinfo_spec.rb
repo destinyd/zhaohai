@@ -32,8 +32,8 @@ describe Userinfo do
       @userinfo = @user.userinfo
     end
 
-    it "#human_gender" do
-      @userinfo.human_gender.should == I18n.t('gender.false')
+    it "#gender" do
+      @userinfo.gender.should be(:male)
     end
   end
 
@@ -43,8 +43,8 @@ describe Userinfo do
       @userinfo = @user.userinfo
     end
 
-    it "#human_gender" do
-      @userinfo.human_gender.should == I18n.t('gender.true')
+    it "#gender" do
+      @userinfo.gender.should be(:female)
     end
   end
 end

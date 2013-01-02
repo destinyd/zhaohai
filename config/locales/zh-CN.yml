@@ -189,6 +189,8 @@ zh-CN:
       activity: 活动
       comment: 评论
     attributes:
+      userinfo:
+        status: 签名
       activity:
         title: 活动标题
         desc: 活动描述
@@ -412,10 +414,6 @@ zh-CN:
     previous_label: "&#8592; 上一页"
     next_label: "下一页 &#8594;"
     page_gap: "&hellip;"
-
-  gender:
-    true: 女
-    false: 男
 
   activity_status:
     opening: 开放

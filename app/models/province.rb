@@ -6,4 +6,8 @@ class Province
   accepts_nested_attributes_for :cities
   attr_accessible :name, :cities_attributes
   index({ name: 1 }, { unique: true, background: true })
+
+  def to_s
+    name
+  end
 end
