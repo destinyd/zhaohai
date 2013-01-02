@@ -62,3 +62,4 @@ group :development do
   gem 'guard-rspec'#, '0.5.5',
 end
 gem 'debugger', git: 'git://github.com/cldwalker/debugger.git',group: [:development, :test]
+gem 'jquery-ui-rails'

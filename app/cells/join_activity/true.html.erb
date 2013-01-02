@@ -1,1 +1,1 @@
-<%= button_to labels(:join),activity_activity_requests_path(@activity),class:"btn btn-primary" %>
+<%= button_to labels(:join),new_activity_activity_request_path(@activity),method: :get,remote:true,class:"btn btn-primary" %>

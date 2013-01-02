@@ -3,8 +3,8 @@ class ActivityRequestsController < InheritedResources::Base
   belongs_to :activity
   authorize_resource
   before_filter :authenticate_user!, except: [:type,:expired,:running,:index]
-  respond_to :html,except: [:accept,:deny]
-  respond_to :js, only: [:new,:create,:accept,:deny]
+  respond_to :html,except: [:accept,:deny,:new]
+  respond_to :js, only: [:new,:accept,:deny]
 
   def create
     @activity_request = current_user.activity_requests.create(
@@ -37,7 +37,7 @@ class ActivityRequestsController < InheritedResources::Base
 
   protected
   def begin_of_association_chain
-    current_user unless ['index','show'].include?(action_name)
+    current_user unless ['index','show','new'].include?(action_name)
   end
 
   def collection

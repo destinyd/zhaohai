@@ -1,7 +1,7 @@
 <div class="row">
   <div class="span8">
     <%= link_to @notification.interesting_user,@notification.interesting_user %>
-    想加入活动《<%= link_to @notification.activity,@notification.activity %>》
+    想加入活动《<%= link_to @notification.activity,@notification.activity %>》<%= ",请求内容为：#{@notification.activity_request.text}" unless @notification.activity_request.text.blank? %>。
   </div>
   <div class="span2">
     <%= link_to labels(:accept),accept_activity_activity_request_path(@notification.activity,@notification.activity_request,notification_id:@notification.id),method: :post,remote:true,class:'btn btn-primary' %>

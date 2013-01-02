@@ -13,4 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//
+//jquery ui just dialog
+//= require jquery.ui.core
+//= require jquery.ui.widget
+//= require jquery.ui.mouse
+//= require jquery.ui.position
+//= require jquery.ui.draggable
+//= require jquery.ui.resizable
+//= require jquery.ui.button
+//= require jquery.ui.dialog
+//= require jquery.ui.datepicker
+//= require jquery.ui.datepicker-zh-CN
+//jquery ui end
 //= require_tree .

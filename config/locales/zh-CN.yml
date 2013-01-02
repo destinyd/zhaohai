@@ -187,6 +187,7 @@ zh-CN:
       user: 用户
       userinfo: 用户信息
       activity: 活动
+      activity_request: 活动请求
       comment: 评论
     attributes:
       userinfo:
@@ -203,6 +204,8 @@ zh-CN:
         invited_users: 邀请了的人
         interested_users: 感兴趣的人
         status: 活动状态
+      activity_request:
+        text: 请求信息
       place:
         name: 地点名称
       shop:
@@ -316,6 +319,7 @@ zh-CN:
     activity_requests: 请求者列表
     close: 关闭
     ignore: 忽略
+    join_request: 请求加入
   notice:
     success: 成功
     create_success: 提交成功

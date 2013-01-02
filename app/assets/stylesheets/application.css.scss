@@ -9,6 +9,14 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *jquery ui just dialog
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require jquery.ui.resizable
+ *= require jquery.ui.button
+ *= require jquery.ui.datepicker
+ *= require jquery.ui.dialog
+ *jquery ui end
  *= require_tree .
 */
 

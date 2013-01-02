@@ -1,4 +1,3 @@
-<%= button_to labels(:edit),edit_activity_path(@activity),method: :get,class:"btn btn-primary",disabled:true %>
-<%= button_to labels(:close),close_activity_path(@activity),method: :post,class:"btn btn-primary",disabled:true %>
-<%= button_to labels(:activity_requests) + "(#{@activity.activity_requests.undeal.count})", activity_activity_requests_path(@activity),method: :get,class:'btn btn-primary',disabled:true %>
-
+<button class="btn btn-primary mb20" disabled="disabled" ><%= labels(:edit) %></button>
+<button class="btn btn-primary mb20" disabled="disabled" ><%= labels(:activity_requests)+ "(#{@activity.activity_requests.undeal.count})" %></button>
+<button class="btn btn-primary mb20" disabled="disabled" ><%= labels(:close) %></button>
