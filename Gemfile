@@ -60,5 +60,5 @@ gem "cells"
 gem "symbolize", :require => "symbolize/mongoid"
 group :development do
   gem 'guard-rspec'#, '0.5.5',
-  gem 'debugger', git: 'git://github.com/cldwalker/debugger.git'
 end
+gem 'debugger', git: 'git://github.com/cldwalker/debugger.git',group: [:development, :test]

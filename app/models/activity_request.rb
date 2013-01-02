@@ -6,7 +6,8 @@ class ActivityRequest
   belongs_to :user
   belongs_to :activity
 
-  validates :activity_id,uniqueness: {scope: :user_id}
+  validates :activity_id,uniqueness: {scope: :user_id},presence: true
+  validates :user_id,uniqueness: {scope: :activity_id},presence: true
 
   scope :undeal,where(deal_at: nil)
   scope :recent,order_by(created_at: :desc)
