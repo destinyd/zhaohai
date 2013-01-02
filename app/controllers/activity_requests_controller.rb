@@ -41,6 +41,6 @@ class ActivityRequestsController < InheritedResources::Base
   end
 
   def collection
-    @activity_requests ||= end_of_association_chain.accessible_by(current_ability).page params[:page]
+    @activity_requests ||= end_of_association_chain.undeal.accessible_by(current_ability).page params[:page]
   end
 end

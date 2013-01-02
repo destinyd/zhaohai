@@ -19,7 +19,7 @@ Zhaohai::Application.routes.draw do
     member do
       post :close
     end
-    resources :activity_requests do
+    resources :activity_requests,except: [:edit,:update] do
       member do
         post :accept
         post :deny

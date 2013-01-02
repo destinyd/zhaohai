@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
+<%= render_field @activity_request,:user %>
+<%= render_field @activity_request.activity,:title %>
+<%= render_field @activity_request,:text %>
 
-
-<%= link_to 'Edit', edit_activity_request_path(@activity_request) %> |
-<%= link_to 'Back', activity_requests_path %>
+<%= link_to labels(:back),:back %>
