@@ -313,6 +313,7 @@ zh-CN:
     join: 加入
     activity_requests: 请求者列表
     close: 关闭
+    ignore: 忽略
   notice:
     success: 成功
     create_success: 提交成功

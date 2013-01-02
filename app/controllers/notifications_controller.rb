@@ -11,7 +11,14 @@ class NotificationsController < InheritedResources::Base
   end
 
   def read
-    current_user.notifications.read.recent.page params[:page]
+    @notifications = current_user.notifications.read.recent.page params[:page]
+  end
+
+  def destroy
+    destroy! do |f|
+      f.js
+      f.html{redirect_to :back}
+    end
   end
 
   protected

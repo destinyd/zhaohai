@@ -1,9 +1,9 @@
-<h1>未读提示信息</h1>
+<h1>已读提示信息</h1>
 <ul class="nav nav-pills">
-  <li class="active">
+  <li>
     <%= link_to '未读',notifications_path %>
   </li>
-  <li>
+  <li class="active">
     <%= link_to '已读',read_notifications_path %>
   </li>
 </ul>
@@ -15,7 +15,7 @@
           <%= render_cell :notification,notification.type_name, notification: notification %>
         </div>
         <div class="span1">
-          <%= link_to t('labels.ignore'), notification_path(notification), method: :delete,remote:true,class:'btn btn-info' %>
+          <%#= link_to t('labels.ignore'), notification_path(notification), method: :delete,remote:true,class:'btn btn-info' %>
         </div>
         <div class="divider" style="margin-left: 20px">
         </div>
