@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @users = User.all
+    #@activities = Activity.opening.not_me(current_user)
   end
 end

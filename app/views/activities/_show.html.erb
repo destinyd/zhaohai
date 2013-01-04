@@ -1,0 +1,19 @@
+<%= render_field_with_dl i18n_field_name(@activity,:type_list),
+  @activity.types.collect{|type| link_to type,type_activities_path(type_name: type)}.join(',').html_safe %>
+<%= render_field @activity,:desc %>
+<%= render_field @activity,:address %>
+<%= render_field @activity,:started_at%>
+<%= render_field @activity,:finished_at%>
+<%= render_field_with_dl i18n_field_name(@activity,:user),link_to(@activity.user,@activity.user) if @activity.user %>
+<% [:users,:invited_users,:interested_users].each do |attr| %>
+  <%= render_field_with_dl i18n_field_name(@activity,attr),
+    @activity.send(attr).collect{|user| link_to user,user}.join(',').html_safe %>
+<% end -%>
+
+<%= render_field_with_dl i18n_field_name(@activity,:status) do %>
+  <%= @activity.human_status %>
+<% end -%>
+
+<%= render_field_with_dl '' do %>
+  <%= render_cell :join_activity,@activity.could_join?(current_user),activity:@activity %>
+<% end -%>

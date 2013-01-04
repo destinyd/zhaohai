@@ -1,9 +1,9 @@
 class ActivityRequestsController < InheritedResources::Base
   actions :all,except: [:destroy,:edit,:update]
   belongs_to :activity
-  authorize_resource
+  skip_load_and_authorize_resource :activity_request, through: :activity_id,only: :create
   before_filter :authenticate_user!, except: [:type,:expired,:running,:index]
-  respond_to :html,except: [:accept,:deny,:new]
+  respond_to :html,except: [:accept,:deny]
   respond_to :js, only: [:new,:accept,:deny]
 
   def create
@@ -11,7 +11,7 @@ class ActivityRequestsController < InheritedResources::Base
       (params[:activity_request] || {}).merge(
         activity_id: params[:activity_id])
     )
-    redirect_to :back
+    redirect_to activity_path(params[:activity_id])
     #create!{@activity}
   end
 

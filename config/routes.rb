@@ -15,9 +15,11 @@ Zhaohai::Application.routes.draw do
     collection do
       get :expired
       get :running
+      get :points
     end
     member do
       post :close
+      get :info
     end
     resources :activity_requests,except: [:edit,:update] do
       member do

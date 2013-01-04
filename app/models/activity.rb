@@ -52,6 +52,9 @@ class Activity
   scope :running,opening.where(:started_at.lt =>  Time.now)
   scope :expired,where(:finished_at.lt =>  Time.now)
   scope :recent,order_by(created_at: :desc)
+  scope :not_me,lambda{|me|me ? excludes(user_id: me.id ) : scoped }
+  scope :city_with,lambda{|city| where(address: Regexp.new(city) )}
+  scope :points,lambda{|city| opening.city_with(city).only(:title,:lat,:lng) }
 
   def to_s
     title
@@ -72,7 +75,7 @@ class Activity
   def could_join?(user)
     [:opening,:running].include?(self.status) and 
     (user.nil? or 
-     (!admins.include?(user) and !users.include?(user) and !interested_users.include?(user))
+     (!could_manage?(user) and !users.include?(user) and !interested_users.include?(user))
     )
 
   end
@@ -127,6 +130,10 @@ class Activity
 
   def human_status
     I18n.t("activity_status."+ status.to_s)
+  end
+
+  def self_managed
+    false
   end
 
   protected

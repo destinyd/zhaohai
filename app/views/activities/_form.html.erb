@@ -1,4 +1,3 @@
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
 <%= simple_form_for(@activity) do |f| %>
   <%= f.error_notification %>
 
@@ -26,6 +25,7 @@
   </div>
 <% end %>
 
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
 <script type="text/javascript">
   <% if @activity.new_record? %>
     new_init_map(null);

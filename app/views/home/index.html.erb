@@ -1,4 +1,14 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
-<% end %>
+<div class="" id="bmap" style="width:98%;height:600px;">
+
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<script type="text/javascript">
+  var hai_icon = new BMap.Icon('<%= asset_path('hai.png')%>',new BMap.Size(32,32));
+  var ren_icon = new BMap.Icon('<%= asset_path('ren.png')%>',new BMap.Size(32,32));
+  var loading_bar = '<img src="<%= asset_path('loading_bar.gif') %>" alt="loading_bar" title="loading_bar" />';
+
+$(document).ready(function(){
+    initHome();
+});
+
+</script>

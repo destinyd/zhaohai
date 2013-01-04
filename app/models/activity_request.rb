@@ -42,6 +42,13 @@ class ActivityRequest
       Notification::ActivityReply)
   end
 
+  def could_manage?(user)
+    activity.could_manage?(user)
+  end
+
+  def could_join?(user)
+    activity.could_join?(user)
+  end
 
   def self_managed
     false
