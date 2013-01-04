@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!,except: [:index,:show]
   #skip_load_and_authorize_resource :only => [:index,:relationship]
   authorize_resource
 
   def index
-    @users = User.all
+    @users = User.page params[:page]
   end
 
   def show

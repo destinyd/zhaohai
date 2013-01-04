@@ -4,7 +4,7 @@ Zhaohai::Application.routes.draw do
   end
   root :to => "home#index"
   devise_for :users
-  resources :users,except:[:show,:index] do
+  resources :users do
     get :relationship, on: :collection
     member do
       post :follow
@@ -33,5 +33,5 @@ Zhaohai::Application.routes.draw do
   end
   get '/activities/type/:type_name' => 'activities#type',as: :type_activities
 
-  resources :userinfos, except: [:destroy]
+  resources :userinfos, except: [:destroy,:index,:show]
 end

@@ -1,0 +1,9 @@
+<h3>用户列表</h3>
+<div>
+ <% @users.each do |user| %>
+  <p><%=link_to user.name, user %></p>
+<% end %>
+</div>
+<div class="pull-right">
+  <%= paginate @users %>
+</div>

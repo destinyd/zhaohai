@@ -3,7 +3,7 @@
   <ul class="nav pull-right">
     <% if user_signed_in? %>
       <li>
-        <%= link_to current_user,current_user.userinfo,class:'navbar-link' %>
+        <%= link_to current_user,current_user,class:'navbar-link' %>
       </li>
       <li>
         <%= link_to current_user.notifications.unread.count,notifications_path,title:'未读提示' %>
@@ -51,7 +51,10 @@
       <%= link_to labels(:new_activity), new_activity_path %>
     </li>
     <li>
-      <%= link_to t('labels.relationship'), relationship_users_path %>
+      <%= link_to labels(:relationship), relationship_users_path %>
+    </li>
+    <li>
+      <%= link_to labels(:users), users_path %>
     </li>
     <li>
       <form action="http://google.com/search" method="get" target="_blank" class="navbar-form">

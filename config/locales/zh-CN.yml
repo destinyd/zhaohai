@@ -320,6 +320,7 @@ zh-CN:
     close: 关闭
     ignore: 忽略
     join_request: 请求加入
+    users: 会员
   notice:
     success: 成功
     create_success: 提交成功

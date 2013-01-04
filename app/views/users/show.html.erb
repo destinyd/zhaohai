@@ -1,0 +1,29 @@
+<h1><%= @user.name %>用户信息</h1>
+<div>
+  <%= render_field @user,:name %>
+</div>
+<div>
+  <%= render @user.userinfo %>
+</div>
+
+<div class="btn-group">
+<% if current_user and @user.followers.include?(current_user) %>
+  <button class="btn btn-info pull-left" disabled>
+    <% if @user.friend.include?(current_user) %>
+      <%= labels(:friend) %>
+    <% else %>
+      <%= labels(:followinged) %>
+    <% end %>
+  </button>
+  <%= button_to t('labels.cancel'),unfollow_user_path(@user),class:'btn btn-danger',confirm:t('labels.sure?') %>
+<% else %>
+  <% if current_user and @user.following.include?(current_user) %>
+    <button class="btn btn-info pull-left" disabled>
+      <%= labels(:followered) %>
+    </button>
+    <%= button_to t('labels.befriend'),follow_user_path(@user),class:'btn btn-primary' %>
+  <% else %>
+    <%= button_to t('labels.following'),follow_user_path(@user),class:'btn btn-primary' %>
+  <% end %>
+<% end unless @user == current_user %>
+</div>
