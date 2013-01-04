@@ -63,3 +63,11 @@ group :development do
 end
 gem 'debugger', git: 'git://github.com/cldwalker/debugger.git',group: [:development, :test]
 gem 'jquery-ui-rails'
+
+#ajax carrierwave https://github.com/huobazi/ajax-upload-with-carrierwave-mongoid
+gem 'carrierwave'#, '0.6.2'
+gem 'carrierwave-mongoid', :github => 'jnicklas/carrierwave-mongoid', :branch => 'mongoid-3.0' 
+gem 'mini_magick'#, '3.4'
+#gem 'rack-raw-upload'#, '1.1.0'
+gem 'simple_form_fancy_uploads'
+

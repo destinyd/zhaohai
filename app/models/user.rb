@@ -67,8 +67,10 @@ class User
   # run 'rake db:mongoid:create_indexes' to create indexes
   index({ email: 1 }, { unique: true, background: true })
   field :name, :type => String
+  #field :avatar,    :type => String
+  mount_uploader :avatar, AvatarUploader
   validates :name,presence: true, uniqueness: true, length: {in: 2..16}
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me,:userinfo_attributes
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me,:userinfo_attributes,:avatar, :avatar_cache
 
   def to_s
     name

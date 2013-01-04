@@ -1,10 +1,10 @@
 <% @provinces = Province.scoped %>
-<%= f.input :gender, :collection => Userinfo.get_gender_values, :include_blank => false %>
+<%= f.input :gender, collection: Userinfo.get_gender_values, include_blank: false %>
 <%= f.input :birth, as: :datepicker %>
 <%= f.input :realname %>
 <%= f.input :status %>
-<%= f.association :now,collection: @provinces,as: :grouped_select, :group_method => :cities %>
-<%= f.association :home,collection: @provinces,as: :grouped_select, :group_method => :cities %>
+<%= f.association :now,collection: @provinces,as: :grouped_select, group_method: :cities %>
+<%= f.association :home,collection: @provinces,as: :grouped_select, group_method: :cities %>
 <%= f.input :work %>
 <%= f.input :school %>
 <script>

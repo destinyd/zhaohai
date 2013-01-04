@@ -277,6 +277,7 @@ zh-CN:
     work: 工作
     school: 学校
     current_password: 当前密码
+    avatar: 头像
 
   labels:
     back: 返回

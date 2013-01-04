@@ -1,5 +1,6 @@
 <h1><%= @user.name %>用户信息</h1>
 <div>
+  <%= render_field_with_dl i18n_field_name(@user,:avatar), image_tag(@user.avatar.thumb) %>
   <%= render_field @user,:name %>
 </div>
 <div>
