@@ -72,6 +72,8 @@ class User
   validates :name,presence: true, uniqueness: true, length: {in: 2..16}
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me,:userinfo_attributes,:avatar, :avatar_cache
 
+  scope :index,only(:name,:avatar).includes(:userinfo)
+
   def to_s
     name
   end

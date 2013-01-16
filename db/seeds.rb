@@ -13,11 +13,11 @@ YAML.load(ENV['ROLES']).each do |role|
   Role.mongo_session['roles'].insert({ :name => role })
   puts 'role: ' << role
 end
-puts 'DEFAULT USERS'
-User.create :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
-user = User.where(email: ENV['ADMIN_EMAIL']).first
-puts 'user: ' << user.name
-user.add_role :admin
+#puts 'DEFAULT USERS'
+#User.create :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
+#user = User.where(email: ENV['ADMIN_EMAIL']).first
+#puts 'user: ' << user.name
+#user.add_role :admin
 
 # provinces and cities
 Province.create({id: 11,name: "北京",cities_attributes: [{name: "东城区"},{name: "西城区"},{name: "崇文区"},{name: "宣武区"},{name: "朝阳区"},{name: "丰台区"},{name: "石景山区"},{name: "海淀区"},{name: "门头沟区"},{name: "房山区"},{name: "通州区"},{name: "顺义区"},{name: "昌平区"},{name: "大兴区"},{name: "怀柔区"},{name: "平谷区"},{name: "密云县"},{name: "延庆县"}]})
@@ -57,3 +57,9 @@ Province.create({id: 82,name: "澳门",cities_attributes: [{name: "澳门"}]})
 Province.create({id: 100,name: "其他",cities_attributes: []})
 Province.create({id: 400,name: "海外",cities_attributes: [{name: "美国"},{name: "英国"},{name: "法国"},{name: "俄罗斯"},{name: "加拿大"},{name: "巴西"},{name: "澳大利亚"},{name: "印尼"},{name: "泰国"},{name: "马来西亚"},{name: "新加坡"},{name: "菲律宾"},{name: "越南"},{name: "印度"},{name: "日本"},{name: "其他"}]})
 # provinces and cities
+
+a = Doorkeeper::Application.find_or_create_by(uid: ENV['API_UID'],secret: ENV['API_SECRET'],name:'zhaohai',redirect_uri: 'http://zhaohai.test/users/auth/zhaohai/callback')
+if a.uid != ENV['API_UID']
+  a.update_attribute :uid,ENV['API_UID']
+  a.update_attribute :secret,ENV['API_SECRET']
+end
