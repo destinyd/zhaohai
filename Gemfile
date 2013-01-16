@@ -9,7 +9,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'jquery-rails'
-gem "unicorn", ">= 4.3.1", :group => :production
 gem "mongoid", ">= 3.0.15"
 gem "rspec-rails", ">= 2.11.4", :group => [:development, :test]
 gem "rspec-cells", :group => [:development, :test]
@@ -36,6 +35,7 @@ when /darwin/i
 when /linux/i
   gem 'libnotify', :group => :development
   gem 'rb-inotify', :group => :development
+  gem "unicorn", ">= 4.3.1", :group => :production
   group :test do
     gem 'guard-spork'#, '0.3.2'
     gem 'spork'#, '0.9.0'
@@ -67,7 +67,7 @@ gem 'jquery-ui-rails'
 
 #ajax carrierwave https://github.com/huobazi/ajax-upload-with-carrierwave-mongoid
 gem 'carrierwave'#, '0.6.2'
-gem 'carrierwave-mongoid', :github => 'jnicklas/carrierwave-mongoid', :branch => 'mongoid-3.0' 
+gem 'carrierwave-mongoid', :git => 'git://github.com/jnicklas/carrierwave-mongoid.git', :branch => 'mongoid-3.0' 
 gem 'mini_magick'#, '3.4'
 #gem 'rack-raw-upload'#, '1.1.0'
 gem 'simple_form_fancy_uploads'
