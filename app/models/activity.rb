@@ -55,6 +55,7 @@ class Activity
   scope :not_me,lambda{|me|me ? excludes(user_id: me.id ) : scoped }
   scope :city_with,lambda{|city| where(address: Regexp.new(city) )}
   scope :points,lambda{|city| opening.city_with(city).only(:title,:lat,:lng) }
+  scope :index,opening.recent
 
   def to_s
     title

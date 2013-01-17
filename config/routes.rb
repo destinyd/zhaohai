@@ -6,7 +6,6 @@ Zhaohai::Application.routes.draw do
       get '/me' => "credentials#me"
       get '/dashboard' => "credentials#dashboard"
       post '/reg' => "registrations#create"
-      resources :activities,except: [:edit,:update,:new]
       resources :activity_requests,except: [:edit,:update,:new]
       resources :users do
         collection do
