@@ -13,6 +13,15 @@ module Api::V1
       respond_with @activity
     end
 
+    def create
+      @activity = current_resource_owner.activities.new params[:activity]
+      if @activity.save
+        render :json => @activity.to_json, :status => :ok
+      else
+        render :json=> @activity.errors, :status=>422
+      end
+    end
+
 
     #custom_actions :collection => :expired
     def type
