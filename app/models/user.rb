@@ -96,4 +96,13 @@ class User
     following & followers
   end
 
+  def quit_activity(activity_id)
+    begin
+      activity = in_activities.find(activity_id)
+      activity.users.delete(self) unless activity.user == self
+      activity
+    rescue
+    end
+  end
+
 end

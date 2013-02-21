@@ -43,6 +43,15 @@ module Api::V1
       current_resource_owner.activities.find(params[:id]).close
     end
 
+    def quit
+      @activity = current_resource_owner.quit_activity(params[:id])
+      if @activity
+        render :json => @activity.to_json, :status => :ok
+      else
+        render :json=> '', :status=>422
+      end
+    end
+
     def info
       @activity = Activity.find(params[:id])
       respond_with @activity
