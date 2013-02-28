@@ -26,6 +26,7 @@ Zhaohai::Application.routes.draw do
         member do
           post :close
           post :quit
+          post :invite
           get :info
         end
         resources :activity_requests,except: [:edit,:update] do
@@ -64,6 +65,7 @@ Zhaohai::Application.routes.draw do
     member do
       post :close
       post :quit
+      post :invite
       get :info
     end
     resources :activity_requests,except: [:edit,:update] do

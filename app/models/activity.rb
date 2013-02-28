@@ -82,7 +82,7 @@ class Activity
   end
 
   def could_manage?(user)
-    [:opening,:running].include?(self.status) and admins.include?(user)
+    [:opening,:running].include?(self.status) and (!user or admins.include?(user))
   end
 
   def interested(u)
@@ -96,6 +96,16 @@ class Activity
       interested_users.delete user
       self.users << user
       true
+    end
+  end
+
+  def invite(str_ids)
+    ids = str_ids.split(',') unless str_ids.blank?
+    if could_manage?(nil) and !ids.blank?
+      self.invited_user_ids += ids
+      self.invited_user_ids.compact!
+      self.invited_user_ids.uniq!
+      save
     end
   end
 

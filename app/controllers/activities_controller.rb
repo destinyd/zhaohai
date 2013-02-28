@@ -22,6 +22,11 @@ class ActivitiesController < InheritedResources::Base
     redirect_to :back
   end
 
+  def invite
+    current_user.activities.find(params[:id]).invite(params[:ids])
+  end
+
+
   def info
     @activity = Activity.find(params[:id])
   end
