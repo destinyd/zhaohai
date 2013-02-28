@@ -1,15 +1,15 @@
 require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
-#source 'http://ruby.taobao.org'
-source 'https://rubygems.org'
-gem 'rails', '3.2.11'
+source 'http://ruby.taobao.org'
+#source 'https://rubygems.org'
+gem 'rails', '3.2.12'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'jquery-rails'
-gem "mongoid", ">= 3.0.15"
+gem "mongoid", ">= 3.1.2"
 gem "rspec-rails", ">= 2.11.4", :group => [:development, :test]
 gem "rspec-cells", :group => [:development, :test]
 gem "capybara", ">= 2.0.1", :group => :test
@@ -62,12 +62,12 @@ gem "symbolize", :require => "symbolize/mongoid"
 group :development do
   gem 'guard-rspec'#, '0.5.5',
 end
-gem 'debugger', git: 'git://github.com/cldwalker/debugger.git',group: [:development, :test]
+#gem 'debugger', git: 'git://github.com/cldwalker/debugger.git',group: [:development, :test]
 gem 'jquery-ui-rails'
 
 #ajax carrierwave https://github.com/huobazi/ajax-upload-with-carrierwave-mongoid
 gem 'carrierwave'#, '0.6.2'
-gem 'carrierwave-mongoid', :git => 'git://github.com/jnicklas/carrierwave-mongoid.git', :branch => 'mongoid-3.0' 
+gem 'carrierwave-mongoid', :git => 'git://github.com/jnicklas/carrierwave-mongoid.git'#, :branch => 'mongoid-3.0' 
 gem 'mini_magick'#, '3.4'
 #gem 'rack-raw-upload'#, '1.1.0'
 gem 'simple_form_fancy_uploads'
