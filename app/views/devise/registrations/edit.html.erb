@@ -1,4 +1,4 @@
-<h2>修改<%= resource_name.to_s.humanize %></h2>
+<h2>修改<%= t("mongoid.models.#{resource_name}") %></h2>
 <% resource.build_userinfo unless resource.userinfo %>
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical',:multipart => true }) do |f| %>
   <%= f.error_notification %>
