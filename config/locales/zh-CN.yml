@@ -322,6 +322,7 @@ zh-CN:
     ignore: 忽略
     join_request: 请求加入
     users: 会员
+    invite: 邀请
   notice:
     success: 成功
     create_success: 提交成功

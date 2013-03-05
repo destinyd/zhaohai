@@ -102,10 +102,18 @@ class Activity
   def invite(str_ids)
     ids = str_ids.split(',') unless str_ids.blank?
     if could_manage?(nil) and !ids.blank?
-      self.invited_user_ids += ids
+      invite_users = User.find(ids)
+      self.invited_users << invite_users
       self.invited_user_ids.compact!
       self.invited_user_ids.uniq!
       save
+      invite_users.each do |iu|
+        iu.notifications.create!({
+          invite_user: self.user,
+          activity: self},
+          Notification::Invited)
+      end
+
     end
   end
 

@@ -10,7 +10,6 @@ Zhaohai::Application.routes.draw do
       resources :users do
         collection do
           get :relationship
-          get :friend
         end
         member do
           post :follow
@@ -67,6 +66,7 @@ Zhaohai::Application.routes.draw do
       post :quit
       post :invite
       get :info
+      get :invite_friend
     end
     resources :activity_requests,except: [:edit,:update] do
       member do

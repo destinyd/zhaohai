@@ -5,7 +5,7 @@ module Api::V1
 
     def index
       @notifications = current_resource_owner.notifications.oread.recent.page params[:page]
-      respond_with @notifications
+      render json: @notifications.to_json
     end
 
     def show
