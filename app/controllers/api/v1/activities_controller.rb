@@ -10,7 +10,7 @@ module Api::V1
 
     def show
       @activity = Activity.find(params[:id])
-      render json: @activity.as_json(include: [:user,:users,:interested_users]).merge(status: @activity.status).to_json
+      render json: @activity.as_json(include: [:user,:users,:interested_users],methods: :status)
     end
 
     def create

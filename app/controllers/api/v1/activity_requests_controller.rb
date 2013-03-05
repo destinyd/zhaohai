@@ -3,6 +3,11 @@ module Api::V1
     doorkeeper_for :all
     respond_to :json
 
+    def index
+      @activity_requests = current_resource_owner.activities.find(params[:activity_id]).activity_requests
+      respond_with @activity_requests
+    end
+
     def create
       @activity_request = current_resource_owner.activity_requests.new(
         (params[:activity_request] || {}).merge(

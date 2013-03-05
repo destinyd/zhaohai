@@ -10,6 +10,7 @@ class Notification::Base
   scope :unread,where(read_at: nil)
   scope :read,where(:read_at.exists => true)
   scope :recent,order_by(created_at: :desc)
+  scope :oread,order_by(read_at: :asc)
 
   def has_read?
     !!read_at

@@ -146,6 +146,11 @@ class Activity
   def self_managed
     false
   end
+  
+  def as_json(options={})
+    options[:except] = [:user_ids,:user_id,:invited_user_ids,:interested_user_ids] if options.blank?
+    super(options)
+  end
 
   protected
 

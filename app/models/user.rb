@@ -105,4 +105,9 @@ class User
     end
   end
 
+  def as_json(options={})
+    options[:only] = [:_id,:name,:avatar] if options.blank?
+    super(options)
+  end
+
 end
