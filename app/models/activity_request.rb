@@ -55,13 +55,16 @@ class ActivityRequest
   end
 
   after_create do 
-    activity.interested(self.user)
-    activity.admins.each do |admin|
-      admin.notifications.create!({
-        interesting_user: self.user,
-        activity: activity,
-        activity_request: self},
-        Notification::InterestedActivity)
+    if self.activity
+      self.activity.interested(self.user)
+      self.activity.admins.each do |admin|
+        admin.notifications.create!({
+          interesting_user: self.user,
+          activity: activity,
+          activity_request: self,
+          text: self.text},
+          Notification::InterestedActivity)
+      end
     end
   end
 

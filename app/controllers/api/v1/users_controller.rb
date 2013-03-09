@@ -18,6 +18,7 @@ module Api::V1
       @following = current_resource_owner.following
       @followers = current_resource_owner.followers
       @friend = current_resource_owner.friend
+      render json: {following: @following, followers: @followers, friend: @friend}.to_json
     end
 
     def friend

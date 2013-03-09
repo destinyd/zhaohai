@@ -5,7 +5,7 @@ module Api::V1
 
     def index
       @activities = Activity.index.page params[:page]
-      respond_with @activities
+      render json: @activities.to_json
     end
 
     def show

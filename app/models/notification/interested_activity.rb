@@ -19,4 +19,17 @@ class Notification::InterestedActivity < Notification::Base
     super(options)
   end
 
+  def accept!
+    unless is_deal?
+      activity_request.accept_by(user)
+      deal
+    end
+  end
+
+  def deny!
+    unless is_deal?
+      activity_request.deny_by(user)
+      deal
+    end
+  end
 end

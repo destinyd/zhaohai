@@ -13,5 +13,27 @@ module Api::V1
       @notification.read!
       render json: @notification.to_json
     end
+
+    def status
+      render json: {count: current_resource_owner.notifications.unread.count,last: current_resource_owner.notifications.unread.last}.to_json
+    end
+
+    def accept
+      @notification = current_resource_owner.notifications.find(params[:id])
+      if @notification.accept!
+        render json: @notification.to_json
+      else
+        render json: @notification.errors, :status=>422
+      end
+    end
+
+    def deny
+      @notification = current_resource_owner.notifications.find(params[:id])
+      if @notification.deny!
+        render json: @notification.to_json
+      else
+        render json: @notification.errors, :status=>422
+      end
+    end
   end
 end

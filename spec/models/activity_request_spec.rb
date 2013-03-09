@@ -1,15 +1,6 @@
 require 'spec_helper'
 
 describe ActivityRequest do
-  describe "#create {}" do
-    activity_request = ActivityRequest.create
-    [:user_id,:activity_id].each do |attr|
-      it "#{attr} invalid" do
-        activity_request.should have(1).error_on(attr)
-      end
-    end
-  end
-
   describe "a richman hold a activity" do
     before(:each) do
       @richman = FactoryGirl.create(:richman)

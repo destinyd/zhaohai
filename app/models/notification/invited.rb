@@ -13,5 +13,18 @@ class Notification::Invited < Notification::Base
     super(options)
   end
 
+  def accept!
+    unless is_deal?
+      activity.users << user
+      activity.invited_users.delete user
+      deal
+    end
+  end
 
+  def deny!
+    unless is_deal?
+      activity.invited_users.delete user
+      deal
+    end
+  end
 end
