@@ -3,7 +3,7 @@ class ActivityRequestsController < InheritedResources::Base
   belongs_to :activity
   skip_load_and_authorize_resource :activity_request, through: :activity_id,only: :create
   before_filter :authenticate_user!, except: [:type,:expired,:running,:index]
-  respond_to :html,except: [:accept,:deny]
+  respond_to :html
   respond_to :js, only: [:new,:accept,:deny]
 
   def create
@@ -22,7 +22,11 @@ class ActivityRequestsController < InheritedResources::Base
       current_user.notifications.find(params[:notification_id]).destroy
     rescue
     end
-    render :remove_notification
+    if request.xhr?
+      render :remove_notification
+    else
+      redirect_to :back
+    end
   end
 
   def deny
@@ -32,7 +36,11 @@ class ActivityRequestsController < InheritedResources::Base
       current_user.notifications.find(params[:notification_id]).destroy
     rescue
     end
-    render :remove_notification
+    if request.xhr?
+      render :remove_notification
+    else
+      redirect_to :back
+    end
   end
 
   protected
