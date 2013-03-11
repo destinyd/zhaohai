@@ -19,7 +19,8 @@ class ActivityRequestsController < InheritedResources::Base
     @activity_request = ActivityRequest.find(params[:id])
     @activity_request.accept_by(current_user) if can?(:accept,@activity_request)
     begin
-      current_user.notifications.find(params[:notification_id]).destroy
+      @notification = current_user.notifications.find(params[:notification_id])
+      @notification.deal
     rescue
     end
     if request.xhr?
@@ -33,7 +34,8 @@ class ActivityRequestsController < InheritedResources::Base
     @activity_request = ActivityRequest.find(params[:id])
     @activity_request.deny_by(current_user) if can?(:deny,@activity_request)
     begin
-      current_user.notifications.find(params[:notification_id]).destroy
+      @notification = current_user.notifications.find(params[:notification_id])
+      @notification.deal
     rescue
     end
     if request.xhr?

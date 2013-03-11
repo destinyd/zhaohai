@@ -16,4 +16,9 @@ class NotificationCell < Cell::Rails
     render
   end
 
+  def invited(args)
+    @notification = args[:notification]
+    render
+  end
+
 end

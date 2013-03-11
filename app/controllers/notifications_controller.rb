@@ -21,6 +21,27 @@ class NotificationsController < InheritedResources::Base
     end
   end
 
+  def accept
+    @notification = current_user.notifications.find(params[:id])
+    @notification.accept!
+    if request.xhr?
+      render :remove_notification
+    else
+      redirect_to :back
+    end
+
+  end
+
+  def deny
+    @notification = current_user.notifications.find(params[:id])
+    @notification.deny!
+    if request.xhr?
+      render :remove_notification
+    else
+      redirect_to :back
+    end
+  end
+
   protected
   def begin_of_association_chain
     current_user

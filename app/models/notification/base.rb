@@ -26,6 +26,7 @@ class Notification::Base
   end
 
   def deal
+    read!
     update_attribute :deal_at,Time.now unless deal_at
   end
 

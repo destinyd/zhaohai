@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="span8">
+    <%= link_to @notification.invite_user,@notification.invite_user %>
+    邀请您加入活动《<%= link_to @notification.activity,@notification.activity %>》。
+  </div>
+  <div class="span2">
+    <%= link_to labels(:accept),accept_notification_path(@notification),method: :post,remote:true,class:'btn btn-primary' %>
+    <%= link_to labels(:deny),deny_notification_path(@notification),method: :post,remote:true,class:'btn' %>
+  </div>
+</div>

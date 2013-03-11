@@ -84,6 +84,10 @@ Zhaohai::Application.routes.draw do
   end
   resources :notifications ,except: [:edit,:update,:new,:create] do
     get :read,on: :collection
+    member do 
+      post :accept
+      post :deny
+    end
   end
   get '/activities/type/:type_name' => 'activities#type',as: :type_activities
 
