@@ -6,6 +6,7 @@ Zhaohai::Application.routes.draw do
       get '/me' => "credentials#me"
       get '/dashboard' => "credentials#dashboard"
       post '/reg' => "registrations#create"
+      post '/test' => "registrations#test"
       resources :activity_requests,except: [:edit,:update,:new]
       resources :users do
         collection do
@@ -38,6 +39,11 @@ Zhaohai::Application.routes.draw do
       end
       resources :notifications ,except: [:edit,:update,:new,:create] do
         get :read,on: :collection
+        get :status,on: :collection
+        member do 
+          post :accept
+          post :deny
+        end
       end
       resources :userinfos, except: [:destroy,:index,:show]
     end
@@ -67,6 +73,7 @@ Zhaohai::Application.routes.draw do
       post :quit
       post :invite
       get :info
+      get :invite_friend
     end
     resources :activity_requests,except: [:edit,:update] do
       member do

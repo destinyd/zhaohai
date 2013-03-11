@@ -6,8 +6,8 @@ class ActivityRequest
   belongs_to :user
   belongs_to :activity
 
-  validates :activity_id,uniqueness: {scope: :user_id},presence: true
-  validates :user_id,uniqueness: {scope: :activity_id},presence: true
+  #validates :activity_id,uniqueness: {scope: :user_id},presence: true
+  #validates :user_id,uniqueness: {scope: :activity_id},presence: true
 
   scope :undeal,where(deal_at: nil)
   scope :recent,order_by(created_at: :desc)
@@ -55,13 +55,16 @@ class ActivityRequest
   end
 
   after_create do 
-    activity.interested(self.user)
-    activity.admins.each do |admin|
-      admin.notifications.create!({
-        interesting_user: self.user,
-        activity: activity,
-        activity_request: self},
-        Notification::InterestedActivity)
+    if self.activity
+      self.activity.interested(self.user)
+      self.activity.admins.each do |admin|
+        admin.notifications.create!({
+          interesting_user: self.user,
+          activity: activity,
+          activity_request: self,
+          text: self.text},
+          Notification::InterestedActivity)
+      end
     end
   end
 

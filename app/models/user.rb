@@ -105,4 +105,35 @@ class User
     end
   end
 
+  def as_json(options={})
+    options[:only] = [:_id,:name,:avatar] if options.blank?
+    super(options)
+  end
+
+  def self.create_phone_test
+    u = User.new(name: random_phone_name,email: random_email)
+    u.userinfo = Userinfo.new gender: :female
+    u.save(:validate =>false)
+    u
+  end
+
+  def self.random_phone_name
+    rand_name = random_name
+    User.where(name: rand_name).any? ? random_phone_name : rand_name
+  end
+
+  def self.random_string
+    o =  ('0'..'9').to_a
+    (0...12).map{ o[rand(o.length)] }.join
+  end
+
+  def self.random_name
+    I18n.t('random.phone') + random_string
+  end
+
+  def self.random_email
+    rand_email = "#{random_string}@zhaohigh.com"
+    User.where(email: rand_email).any? ?  random_email : rand_email 
+  end
+
 end

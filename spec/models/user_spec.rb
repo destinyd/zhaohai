@@ -149,5 +149,19 @@ describe User do
     end
   end
 
+  describe :create_phone_test do
+    let(:user) do
+      User.create_phone_test
+    end
+
+    it "name should start with i18n phone user" do
+      user.name.should start_with(I18n.t('random.phone'))
+    end
+
+    it 'encrypted_password blank' do
+      user.encrypted_password.should be_blank
+    end
+  end
+
 
 end

@@ -1,0 +1,8 @@
+<%= form_tag invite_activity_path(@activity),remote: true do |f| %>
+  <p>
+  <% @friend.each do |user| %>
+    <%= check_box_tag "ids[]",user._id %> <%= user.name %>
+  <% end %>
+  </p>
+  <%= submit_tag '邀请',disabled: !(@friend.count > 0) %>
+<% end -%>

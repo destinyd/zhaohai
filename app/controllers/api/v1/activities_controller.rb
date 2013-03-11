@@ -5,12 +5,12 @@ module Api::V1
 
     def index
       @activities = Activity.index.page params[:page]
-      respond_with @activities
+      render json: @activities.to_json
     end
 
     def show
       @activity = Activity.find(params[:id])
-      respond_with @activity
+      render json: @activity.as_json(include: [:user,:users,:interested_users],methods: :status)
     end
 
     def create
