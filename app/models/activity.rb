@@ -25,7 +25,7 @@ class Activity
   validates_presence_of :lat
   validates_presence_of :lng
   #field :user_id, type: Integer
-  field :started_at, type: DateTime
+  field :started_at, type: DateTime,default: ->{ Time.now }
   field :finished_at, type: DateTime
   field :closed_at, type: DateTime
 
