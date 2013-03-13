@@ -70,7 +70,7 @@ class Activity
   end
 
   def admins
-    [user]
+    user ? [user] : []
   end
 
   def could_join?(user)
