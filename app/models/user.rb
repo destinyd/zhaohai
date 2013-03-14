@@ -73,6 +73,7 @@ class User
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me,:userinfo_attributes,:avatar, :avatar_cache
 
   scope :index,only(:name,:avatar).includes(:userinfo)
+  scope :api_show,includes(:userinfo)
 
   def to_s
     name
@@ -106,8 +107,27 @@ class User
   end
 
   def as_json(options={})
-    options[:only] = [:_id,:name,:avatar] if options.blank?
-    super(options)
+    if options == :api_show
+      options = {}
+      options[:only] = [:_id,:name,:avatar]
+      options[:include] = {userinfo: {
+        except: [:realname,:created_at,:updated_at,:user_id,:_id]
+      }}
+      super(options).merge(points)
+    else
+      options[:only] = [:_id,:name,:avatar] if options.blank?
+      super(options)
+    end
+  end
+
+  def points
+    {
+      points: {
+        activities: activities.count,
+        in_activities: in_activities.count,
+        interested_activities: interested_activities.count
+      }
+    }
   end
 
   def self.create_phone_test

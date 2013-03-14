@@ -3,8 +3,8 @@
 <%= f.input :birth, as: :datepicker %>
 <%= f.input :realname %>
 <%= f.input :status %>
-<%= f.association :now,collection: @provinces,as: :grouped_select, group_method: :cities %>
-<%= f.association :home,collection: @provinces,as: :grouped_select, group_method: :cities %>
+<%= f.input :now,collection: @provinces,as: :grouped_select, group_method: :cities,value_method: :name,placeholder: '选择您现在所在城市' %>
+<%= f.input :home,collection: @provinces,as: :grouped_select, group_method: :cities,value_method: :name,placeholder: '选择您家乡所在城市' %>
 <%= f.input :work %>
 <%= f.input :school %>
 <script>
@@ -13,5 +13,11 @@
             changeYear: true,
             minDate: "-80Y", maxDate: "-15Y"
           });
+        $('select.grouped_select').chosen(
+            {
+                no_results_text: "没有数据符合",
+                placeholder_text: '选择城市'
+            }
+        );
     });
 </script>

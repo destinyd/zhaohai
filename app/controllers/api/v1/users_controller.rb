@@ -11,7 +11,7 @@ module Api::V1
 
     def show
       @user = User.find(params[:id])
-      respond_with @user
+      render json: @user.as_json(:api_show)
     end
 
     def relationship
