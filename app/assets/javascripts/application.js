@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require chosen-jquery
+//= require select2
 //
 //jquery ui just dialog
 //= require jquery.ui.core
