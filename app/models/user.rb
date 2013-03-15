@@ -107,13 +107,12 @@ class User
   end
 
   def as_json(options={})
-    if options == :api_show
-      options = {}
+    if options[:type] == :api_show
       options[:only] = [:_id,:name,:avatar]
       options[:include] = {userinfo: {
         except: [:realname,:created_at,:updated_at,:user_id,:_id]
       }}
-      super(options).merge(points)
+      super(options).merge(relationship(options[:user])).merge(points)
     else
       options[:only] = [:_id,:name,:avatar] if options.blank?
       super(options)
@@ -127,6 +126,18 @@ class User
         in_activities: in_activities.count,
         interested_activities: interested_activities.count
       }
+    }
+  end
+
+  def relationship(user)
+    {
+      relationship:
+      following.include?(user) ? (
+        followers.include?(user) ? :friend : :follower
+      ) :
+      (
+        followers.include?(user) ? :following : nil
+      )
     }
   end
 

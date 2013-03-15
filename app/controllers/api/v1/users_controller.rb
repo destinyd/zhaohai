@@ -11,7 +11,7 @@ module Api::V1
 
     def show
       @user = User.find(params[:id])
-      render json: @user.as_json(:api_show)
+      render json: @user.as_json(type: :api_show,user: current_resource_owner)
     end
 
     def relationship
@@ -28,8 +28,11 @@ module Api::V1
 
     def follow
       @user = User.find(params[:id])
-      current_resource_owner.follow! @user
-      redirect_to :back
+      if current_resource_owner.follow! @user
+        render json: current_resource_owner.relationship(@user)
+      else
+        render json:{},status: 422
+      end
     end
 
     def unfollow
