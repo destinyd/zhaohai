@@ -73,4 +73,5 @@ gem 'mini_magick'#, '3.4'
 gem 'simple_form_fancy_uploads'
 #gem 'chosen-rails'
 gem "select2-rails"
-gem 'enumerize'
+#gem 'enumerize'
+gem "mongoid-enum"

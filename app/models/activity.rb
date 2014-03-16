@@ -2,7 +2,7 @@ class Activity
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::TaggableOn
-  extend Enumerize
+  include Mongoid::Enum
 
   belongs_to :user, :inverse_of => :activities#,class_name: 'User'
 
@@ -29,8 +29,7 @@ class Activity
   field :finished_at, type: DateTime
   field :closed_at, type: DateTime
 
-  field :kind
-  enumerize :kind, in: %w(public private), default: :public, predicates: true
+  enum :kind, [:public, :private], default: :public
   field :min_person_needed, type: Integer, default: 0
 
   taggable_on :types
