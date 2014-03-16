@@ -2,7 +2,7 @@ require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
 source 'http://ruby.taobao.org'
 #source 'https://rubygems.org'
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.17'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -17,7 +17,7 @@ gem "database_cleaner", ">= 0.9.1", :group => :test
 gem "mongoid-rspec", ">= 1.5.5", :group => :test
 gem "email_spec", ">= 1.4.0", :group => :test
 gem "factory_girl_rails", ">= 4.1.0", :group => [:development, :test]
-gem "bootstrap-sass", ">= 2.2.2.0"
+gem "bootstrap-sass", [">= 2.2.2.0","< 3"]
 gem "devise", ">= 2.1.2"
 gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
@@ -66,8 +66,8 @@ end
 gem 'jquery-ui-rails'
 
 #ajax carrierwave https://github.com/huobazi/ajax-upload-with-carrierwave-mongoid
-gem 'carrierwave'#, '0.6.2'
-gem 'carrierwave-mongoid', :git => 'git://github.com/jnicklas/carrierwave-mongoid.git'#, :branch => 'mongoid-3.0' 
+#gem 'carrierwave'#, '0.6.2'
+gem 'carrierwave-mongoid'#, :git => 'git://github.com/jnicklas/carrierwave-mongoid.git'#, :branch => 'mongoid-3.0' 
 gem 'mini_magick'#, '3.4'
 #gem 'rack-raw-upload'#, '1.1.0'
 gem 'simple_form_fancy_uploads'
