@@ -204,6 +204,7 @@ zh-CN:
         invited_users: 邀请了的人
         interested_users: 感兴趣的人
         status: 活动状态
+        kind: 活动类型
       activity_request:
         text: 请求信息
       place:

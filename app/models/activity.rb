@@ -2,6 +2,7 @@ class Activity
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::TaggableOn
+  extend Enumerize
 
   belongs_to :user, :inverse_of => :activities#,class_name: 'User'
 
@@ -27,6 +28,9 @@ class Activity
   field :started_at, type: DateTime,default: ->{ Time.now }
   field :finished_at, type: DateTime
   field :closed_at, type: DateTime
+
+  field :kind
+  enumerize :kind, in: %w(public private), default: :public, predicates: true
 
   taggable_on :types
 
