@@ -31,6 +31,7 @@ class Activity
 
   field :kind
   enumerize :kind, in: %w(public private), default: :public, predicates: true
+  field :min_person_needed, type: Integer, default: 0
 
   taggable_on :types
 
@@ -49,7 +50,7 @@ class Activity
   },
   { background: true})
 
-  attr_accessible :title, :desc, :lat, :lng, :started_at,:address,:type_list#, :finished_at
+  attr_accessible :title, :desc, :lat, :lng, :started_at,:address,:type_list, :kind, :min_person_needed#, :finished_at
 
   scope :opening,where(:finished_at.gt => Time.now,:closed_at => nil)
   scope :running,opening.where(:started_at.lt =>  Time.now)
@@ -77,7 +78,7 @@ class Activity
   end
 
   def could_join?(user)
-    [:opening,:running].include?(self.status) and 
+    %w(opening running plan).include?(self.status.to_s) and 
     (user.nil? or 
      (!could_manage?(user) and !users.include?(user) and !interested_users.include?(user))
     )
@@ -85,7 +86,7 @@ class Activity
   end
 
   def could_manage?(user)
-    [:opening,:running].include?(self.status) and (!user or admins.include?(user))
+    %w(opening running plan).include?(self.status.to_s) and (!user or admins.include?(user))
   end
 
   def interested(u)
@@ -142,11 +143,15 @@ class Activity
     update_attribute :closed_at,Time.now if closed_at.nil?
   end
 
+  def min_person_enough?
+    interested_users.count >= min_person_needed
+  end
+
   def status
     if is_closed?
       :closed
     else
-      is_open? ? is_run? ? :running : :opening : :expired
+      is_open? ? (min_person_enough? ? (is_run? ? :running : :opening) : ( is_run? ? :failure : :plan)) : :expired
     end
   end
 
@@ -161,6 +166,10 @@ class Activity
   def as_json(options={})
     options[:except] = [:user_ids,:user_id,:invited_user_ids,:interested_user_ids] if options.blank?
     super(options)
+  end
+
+  def can_read_by?(user)
+    self.public? or (user and invited_users.include?(user) or admin == user)
   end
 
   protected

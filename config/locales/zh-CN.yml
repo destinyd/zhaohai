@@ -205,6 +205,7 @@ zh-CN:
         interested_users: 感兴趣的人
         status: 活动状态
         kind: 活动类型
+        min_person_needed: 最低人数要求
       activity_request:
         text: 请求信息
       place:
@@ -428,6 +429,8 @@ zh-CN:
     running: 进行中
     expired: 过期
     closed: 关闭
+    plan: 计划中
+    failure: 计划失败
 
   website:
     title: 找嗨

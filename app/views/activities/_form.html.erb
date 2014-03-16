@@ -7,6 +7,7 @@
     <%= f.input :title %>
     <%= f.input :desc %>
     <%= f.input :started_at, input_html: {class: 'form-datetime-picker'} %>
+    <%= f.input :min_person_needed, hint: '(0为无要求)' %>
     <%= f.input :address %>
     <%= f.input :lat,as: :hidden %>
     <%= f.input :lng,as: :hidden %>
