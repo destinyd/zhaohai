@@ -1,7 +1,6 @@
 class Activity
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::MultiParameterAttributes
   include Mongoid::TaggableOn
 
   belongs_to :user, :inverse_of => :activities#,class_name: 'User'

@@ -5,8 +5,7 @@
     <%= f.input :type_list %>
     <%= f.input :title %>
     <%= f.input :desc %>
-    <%= f.input :started_at,as: :datetime, :start_year => Date.today.year,
-  :end_year => Date.today.year + 1 %>
+    <%= f.input :started_at, input_html: {class: 'form-datetime-picker'} %>
     <%= f.input :address %>
     <%= f.input :lat,as: :hidden %>
     <%= f.input :lng,as: :hidden %>
