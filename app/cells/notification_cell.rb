@@ -2,21 +2,27 @@ class NotificationCell < Cell::Rails
   helper ApplicationHelper
 
   def interested_activity(args)
-    @notification = args[:notification]
-    render
+    get_notification_and_render(args)
   end
 
   def activity_reply(args)
-    @notification = args[:notification]
-    render
+    get_notification_and_render(args)
   end
 
   def follower(args)
-    @notification = args[:notification]
-    render
+    get_notification_and_render(args)
   end
 
   def invited(args)
+    get_notification_and_render(args)
+  end
+
+  def activity_success(args)
+    get_notification_and_render(args)
+  end
+
+  private
+  def get_notification_and_render(args)
     @notification = args[:notification]
     render
   end

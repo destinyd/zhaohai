@@ -143,7 +143,7 @@ class Activity
   end
 
   def min_person_enough?
-    interested_users.count >= min_person_needed
+    users.count >= min_person_needed
   end
 
   def status
@@ -168,7 +168,7 @@ class Activity
   end
 
   def can_read_by?(user)
-    self.public? or (user and invited_users.include?(user) or admin == user)
+    self.public? or (user and (invited_users.include?(user) or users.include?(user))) or admin == user
   end
 
   protected
@@ -179,6 +179,15 @@ class Activity
 
   after_create do
     self.users << user
+  end
+
+  #after_update :notify_success
+  def notify_success
+    users.each do |user|
+      user.notifications.create!({
+          activity: self},
+          Notification::ActivitySuccess)
+    end
   end
 
 

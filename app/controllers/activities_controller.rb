@@ -40,11 +40,16 @@ class ActivitiesController < InheritedResources::Base
     @activities = Activity.points(params[:city])
     render json: @activities
   end
+
+  def private
+    @activities = Activity.private.opening.page(params[:page])
+    render :index
+  end
   protected
   def begin_of_association_chain
     current_user unless ['index','show'].include?(action_name)
   end
   def collection
-    @activities ||= end_of_association_chain.opening.recent.accessible_by(current_ability).page params[:page]
+    @activities ||= end_of_association_chain.public.opening.recent.accessible_by(current_ability).page params[:page]
   end
 end

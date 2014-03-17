@@ -67,6 +67,7 @@ Zhaohai::Application.routes.draw do
       get :expired
       get :running
       get :points
+      get :private
     end
     member do
       post :close

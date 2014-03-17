@@ -15,9 +15,12 @@ class Notification::Invited < Notification::Base
 
   def accept!
     unless is_deal?
+      old_enough = activity.min_person_enough?
       activity.users << user
       activity.invited_users.delete user
       deal
+      new_enough = activity.reload.min_person_enough?
+      activity.notify_success if !old_enough and new_enough
     end
   end
 
