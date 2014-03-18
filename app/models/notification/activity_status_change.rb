@@ -1,4 +1,4 @@
-class Notification::ActivitySuccess < Notification::Base
+class Notification::ActivityStatusChange < Notification::Base
   belongs_to :activity,inverse_of: nil
 
   def as_json(options={})

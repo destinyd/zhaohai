@@ -430,6 +430,7 @@ zh-CN:
     expired: 过期
     closed: 关闭
     plan: 计划中
+    success: 计划达成
     failure: 计划失败
 
   website:

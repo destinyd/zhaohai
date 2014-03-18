@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="span8">
+    活动《<%= link_to @notification.activity,@notification.activity %>》 <%= t('activity_status.'+@notification.text) %>。
+    <% if @notification.text == 'success' %>
+      请于<em class="red"><%= @notification.activity.started_at %></em>准时到<%= @notification.activity.address %>参加。
+    <% end %>
+  </div>
+  <div class="span2">
+  </div>
+</div>
+
+

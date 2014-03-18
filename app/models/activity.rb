@@ -174,6 +174,10 @@ class Activity
     self.public? or (user and (invited_users.include?(user) or users.include?(user))) or admin == user
   end
 
+  def may_be_failure?
+    users.count + invited_users.count < min_person_needed
+  end
+
   protected
 
   before_create do
@@ -185,12 +189,12 @@ class Activity
     self.opening! if users.count >= min_person_needed
   end
 
-  #after_update :notify_success
-  def notify_success
+  def notify_status_change_to(status)
     users.each do |user|
       user.notifications.create!({
-          activity: self},
-          Notification::ActivitySuccess)
+        text: status,
+        activity: self},
+        Notification::ActivityStatusChange)
     end
   end
 

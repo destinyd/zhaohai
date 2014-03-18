@@ -17,7 +17,7 @@ class NotificationCell < Cell::Rails
     get_notification_and_render(args)
   end
 
-  def activity_success(args)
+  def activity_status_change(args)
     get_notification_and_render(args)
   end
 
