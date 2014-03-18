@@ -29,10 +29,10 @@ class Activity
   field :finished_at, type: DateTime
   field :closed_at, type: DateTime
 
-  enum :kind, [:public, :private], default: :public
+  enum :kind, %i(public private), default: :public
   field :min_person_needed, type: Integer, default: 0
 
-  enum :status, [:running, :opening, :plan, :expired, :closed,:success, :failure], default: :plan
+  enum :status, %i(running opening plan expired closed success failure), default: :plan
 
   taggable_on :types
 

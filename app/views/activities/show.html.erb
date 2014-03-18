@@ -2,12 +2,6 @@
   <div class="span7">
     <h1><%= @activity.title %></h1>
     <%= render "show" %>
-    <%  if @activity.could_manage?(current_user) %>
-      <%= render_field_with_dl '' do %>
-        <%= render_cell :manage_activity,@activity.could_manage?(current_user),activity:@activity %>
-      <% end -%>
-    <% end -%>        
-
   </div>
   <div class="span4">
     <div id="bmap"  style="width:100%;height:200px">

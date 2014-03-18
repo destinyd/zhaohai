@@ -1,0 +1,6 @@
+<% if @activity.could_join?(@user) %>
+  <%= button_to labels(:join),new_activity_activity_request_path(@activity),method: :get,remote:true,class:"btn btn-primary" %>
+<% else %>
+  <button class="btn btn-primary" disabled="disabled" ><%= labels(:join) %></button>
+<% end %>
+

@@ -1,0 +1,5 @@
+<% if @activity.could_manage?(@user) %>
+  <%= button_to labels(:invite),invite_friend_activity_path(@activity),method: :get,remote: true,class:"btn btn-primary" %>
+  <%= button_to labels(:edit),edit_activity_path(@activity),method: :get,class:"btn btn-primary" %>
+  <%= button_to labels(:activity_requests) + "(#{@activity.activity_requests.undeal.count})", activity_activity_requests_path(@activity),method: :get,class:'btn btn-primary' %>
+<% end %>

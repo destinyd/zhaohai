@@ -16,5 +16,5 @@
 <% end -%>
 
 <%= render_field_with_dl '' do %>
-  <%= render_cell :join_activity,@activity.could_join?(current_user),activity:@activity %>
+  <%= render_cell :activity,@activity.status, activity: @activity, user: current_user %>
 <% end -%>
