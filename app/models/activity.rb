@@ -32,6 +32,8 @@ class Activity
   enum :kind, [:public, :private], default: :public
   field :min_person_needed, type: Integer, default: 0
 
+  enum :status, [:running, :opening, :plan, :expired, :closed,:success, :failure], default: :plan
+
   taggable_on :types
 
   index({
@@ -54,6 +56,7 @@ class Activity
   scope :opening,where(:finished_at.gt => Time.now,:closed_at => nil)
   scope :running,opening.where(:started_at.lt =>  Time.now)
   scope :expired,where(:finished_at.lt =>  Time.now)
+  scope :on_job,where(:_status.nin =>  [:expired, :closed, :failure])
   scope :recent,order_by(created_at: :desc)
   scope :not_me,lambda{|me|me ? excludes(user_id: me.id ) : scoped }
   scope :city_with,lambda{|city| where(address: Regexp.new(city) )}
@@ -77,7 +80,7 @@ class Activity
   end
 
   def could_join?(user)
-    %w(opening running plan).include?(self.status.to_s) and 
+    %i(opening running plan).include?(self.status) and 
     (user.nil? or 
      (!could_manage?(user) and !users.include?(user) and !interested_users.include?(user))
     )
@@ -85,7 +88,7 @@ class Activity
   end
 
   def could_manage?(user)
-    %w(opening running plan).include?(self.status.to_s) and (!user or admins.include?(user))
+    %i(opening running plan).include?(self.status) and (!user or admins.include?(user))
   end
 
   def interested(u)
@@ -146,7 +149,7 @@ class Activity
     users.count >= min_person_needed
   end
 
-  def status
+  def now_status
     if is_closed?
       :closed
     else
@@ -179,6 +182,7 @@ class Activity
 
   after_create do
     self.users << user
+    self.opening! if users.count >= min_person_needed
   end
 
   #after_update :notify_success

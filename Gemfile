@@ -74,4 +74,5 @@ gem 'simple_form_fancy_uploads'
 #gem 'chosen-rails'
 gem "select2-rails"
 #gem 'enumerize'
-gem "mongoid-enum"
+gem "mongoid-enum", github: 'destinyd/mongoid-enum'
+gem 'rufus-scheduler'

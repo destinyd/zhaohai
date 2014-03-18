@@ -40,7 +40,7 @@ module Api::V1
     end
 
     def close
-      current_resource_owner.activities.find(params[:id]).close
+      current_resource_owner.activities.find(params[:id]).closed!
     end
 
     def invite

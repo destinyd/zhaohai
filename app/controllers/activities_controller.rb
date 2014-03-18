@@ -19,7 +19,7 @@ class ActivitiesController < InheritedResources::Base
   end
 
   def close
-    current_user.activities.find(params[:id]).close
+    current_user.activities.find(params[:id]).closed!
     redirect_to :back
   end
 
